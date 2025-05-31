@@ -29,6 +29,8 @@ public abstract class AuditableEntity {
     @Column(name = "UPDATEDON",nullable = true)
     protected LocalDateTime updatedOn;
 
+
+
     public Boolean getActive() {
         return isActive;
     }
