@@ -82,4 +82,8 @@ public class HotelRoomInView {
     public void setMaxBabies(@NotNull BigInteger maxBabies) {
         this.maxBabies = maxBabies;
     }
+
+    public static HotelRoomInView empty(){
+        return new HotelRoomInView();
+    }
 }

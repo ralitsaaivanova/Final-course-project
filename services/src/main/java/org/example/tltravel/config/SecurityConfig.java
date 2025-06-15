@@ -27,6 +27,15 @@ public class SecurityConfig {
 //
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http
+                // 1) Disable CSRF so you can POST/PUT/DELETE without a token
+                .csrf().disable()
+
+                // 2) Allow all requests through without login
+                .authorizeRequests()
+                .anyRequest().permitAll();
+
 //        http
 //                .authorizeHttpRequests(authz -> authz
 //                        .requestMatchers("/Admin/**").hasRole("ADMIN")
@@ -49,14 +58,14 @@ public class SecurityConfig {
 //                ;
 //
 //        return http.build();
-
-        http.csrf().disable();
-        http
-                .authorizeHttpRequests(authz -> authz
-                        .requestMatchers(HttpMethod.POST, "/Users").permitAll()
-                        .anyRequest().authenticated()
-                ).httpBasic();  // <-- enables Basic auth
-
+//
+//        http.csrf().disable();
+//        http
+//                .authorizeHttpRequests(authz -> authz
+//                        .requestMatchers(HttpMethod.POST, "/Users").permitAll()
+//                        .anyRequest().authenticated()
+//                ).httpBasic();  // <-- enables Basic auth
+//
         return http.build();
     }
 //

@@ -140,7 +140,7 @@ public class ReservationPaymentServiceImpl implements IReservationPaymentService
             toSave.setCreatedOn(entity.getCreatedOn());
             reservationPaymentRepository.save(toSave);
 
-            ReservationPaymentOutView res= modelMapper.map(entity,new TypeToken<ReservationPaymentOutView>(){}.getType());
+            ReservationPaymentOutView res= modelMapper.map(toSave,new TypeToken<ReservationPaymentOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

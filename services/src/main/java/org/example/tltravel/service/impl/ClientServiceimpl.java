@@ -144,7 +144,7 @@ public class ClientServiceimpl implements IClientService {
             toSave.setCreatedOn(entity.getCreatedOn());
             clientRepository.save(toSave);
 
-            ClientOutView res= modelMapper.map(entity,new TypeToken<ClientOutView>(){}.getType());
+            ClientOutView res= modelMapper.map(toSave,new TypeToken<ClientOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

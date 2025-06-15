@@ -142,7 +142,7 @@ public class ExtrasServiceImpl implements IExtrasService {
             toSave.setCreatedOn(entity.getCreatedOn());
             extrasRepository.save(toSave);
 
-            ExtrasOutView res= modelMapper.map(entity,new TypeToken<ExtrasOutView>(){}.getType());
+            ExtrasOutView res= modelMapper.map(toSave,new TypeToken<ExtrasOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

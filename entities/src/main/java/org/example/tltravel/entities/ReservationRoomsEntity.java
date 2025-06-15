@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity(name = "RESERVATIONROOMS")
-public class ReservationRoomsEntity  {
+public class ReservationRoomsEntity  extends BaseEntity{
     @Column(name="ADULTS", nullable=false,precision = 0)
     private BigDecimal adults;
     @Column(name="CHILDREN", nullable=false,precision = 0)
@@ -14,9 +14,9 @@ public class ReservationRoomsEntity  {
     private BigDecimal babies;
     @Column(name="PRICE", nullable=false)
     private BigDecimal price;
-    @Id
-    @Column(name="ID",nullable = false)
-    private Long id;
+//    @Id
+//    @Column(name="ID",nullable = false)
+//    private Long id;
     @Column(name="HOTELROOM_ID", nullable=false)
     private Long hotelRoom_id;
 

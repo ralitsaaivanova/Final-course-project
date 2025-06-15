@@ -2,7 +2,6 @@ package org.example.tltravel.controller;
 
 import org.example.tltravel.exceptions.TLEntityNotFound;
 import org.example.tltravel.service.IHotelPhotosService;
-import org.example.tltravel.view.in.HotelPhotoInView;
 import org.example.tltravel.view.out.HotelPhotoOutView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -11,19 +10,67 @@ import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/HotelPhotos")
 public class HotelPhotosController {
     @Autowired
     private IHotelPhotosService service;
+
+    @GetMapping("/upload")
+    public ModelAndView showUploadForm(@RequestParam("hotelId") Long hotelId, Model model) {
+        model.addAttribute("hotelId", hotelId);
+        return new ModelAndView("hotelPhotos");
+    }
+
+    // Handle form submit
+    @PostMapping("/upload")
+    public ModelAndView handleFileUpload(@RequestParam("hotelId") Long hotelId,
+                                   @RequestParam("file") MultipartFile file,
+                                   RedirectAttributes flash) {
+        try {
+            HotelPhotoOutView photo = service.uploadPhoto(hotelId, file);
+            flash.addFlashAttribute("message", "Uploaded photo #" + photo.getId());
+        } catch (Exception e) {
+            flash.addFlashAttribute("error", "Could not upload: " + e.getMessage());
+        }
+        return new ModelAndView("redirect:/HotelPhotos/list?hotelId=" + hotelId);
+    }
+
+    // List all active photos for a hotel
+    @GetMapping("/list")
+    public ModelAndView listPhotos(@RequestParam("hotelId") Long hotelId, Model model) throws TLEntityNotFound {
+        // You’ll need a method in your service/repo to fetch all photos by hotelId
+        List<HotelPhotoOutView> photos = service.findActiveByHotelId(hotelId);
+        model.addAttribute("photos", photos);
+        model.addAttribute("hotelId", hotelId);
+        return new ModelAndView("hotelPhotos");
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deletePhotoWeb(@PathVariable Long id,
+                                 @RequestParam("hotelId") Long hotelId,
+                                 RedirectAttributes flash) {
+        try {
+            service.deletePhoto(id);
+            flash.addFlashAttribute("message", "Deleted photo #" + id);
+        } catch (Exception e) {
+            flash.addFlashAttribute("error", "Could not delete: " + e.getMessage());
+        }
+        return "redirect:/HotelPhotos/list?hotelId=" + hotelId;
+    }
 
     @PostMapping({""})
     public ResponseEntity<HotelPhotoOutView> addPhoto(@RequestParam("file") MultipartFile file,

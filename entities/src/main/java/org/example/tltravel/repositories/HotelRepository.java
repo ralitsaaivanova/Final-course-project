@@ -28,6 +28,8 @@ public interface HotelRepository extends JpaRepository<HotelEntity,Long> {
     @Query("SELECT h from HOTEL h WHERE h.locationId = :id")
     Page<HotelEntity> findAllByLocation(Long id, Pageable pageable);
 
+
+
     @Query("""
              SELECT e FROM HOTEL h
                         JOIN HOTELEXTRAS he ON he.hotel_id = h.id

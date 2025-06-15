@@ -1,26 +1,102 @@
 package org.example.tltravel.controller;
 
+import jakarta.validation.Valid;
 import org.example.tltravel.exceptions.TLEntityNotActive;
 import org.example.tltravel.exceptions.TLEntityNotFound;
+import org.example.tltravel.service.IAgentService;
 import org.example.tltravel.service.IHotelService;
+import org.example.tltravel.service.ILocationService;
 import org.example.tltravel.view.in.HotelInView;
 import org.example.tltravel.view.out.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/Hotel")
 public class HotelController {
     @Autowired
     private IHotelService service;
+
+    @Autowired
+    private ILocationService locationService;
+
+    @Autowired
+    private IAgentService agentService;
+
+    @GetMapping("/hotelInfo")
+    public ModelAndView showForm(@RequestParam(value="id", required=false) Long id, Model model)
+            throws TLEntityNotFound {
+
+        HotelInView inView = HotelInView.empty();
+        if (id != null) {
+            // fetch existing
+            HotelOutView out = service
+                    .getById(id)
+                    .orElseThrow(() -> new TLEntityNotFound("Hotel not found: " + id));
+            inView = HotelInView.from(out);
+        }
+        model.addAttribute("hotelInView", inView);
+
+        model.addAttribute("hotelId",id);
+
+        // load lookup data
+        PageRequest pageable = PageRequest.of(0, 100);
+        model.addAttribute("locations", locationService.getAll(pageable));
+        model.addAttribute("partners", agentService.getAll(pageable) );
+
+        model.addAttribute("hotels",service.getAll(PageRequest.of(0,10)));
+
+        return new ModelAndView ("hotel");
+    }
+
+    @PostMapping("/hotelInfo")
+    public ModelAndView addHotel(@RequestParam(value = "id", required = false) Long id,
+                                 @ModelAttribute("hotelInView") @Valid HotelInView hotelInView,
+                                    BindingResult bindingResult,
+                                    RedirectAttributes flash,
+                                    Model model) throws TLEntityNotFound {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("locations", locationService.getAll(PageRequest.of(0,100)));
+            model.addAttribute("partners",  agentService.getAll(PageRequest.of(0,100)));
+            model.addAttribute("hotels",service.getAll(PageRequest.of(0,10)));
+            model.addAttribute("hotelId",id);
+            return new ModelAndView("hotel");
+
+        }
+        if (id != null) {
+            service.update(id, hotelInView);
+            flash.addFlashAttribute("message", "Hotel updated");
+        } else {
+            service.addOne(hotelInView);
+            flash.addFlashAttribute("message", "Hotel created");
+        }
+        return new ModelAndView("redirect:/Hotel/hotelInfo?success");
+    }
+
+    @PostMapping("/hotelInfo/delete")
+    public ModelAndView deleteHotel(
+            @RequestParam("id") Long id,
+            RedirectAttributes flash
+    ) throws TLEntityNotFound, TLEntityNotActive {
+        service.deleteOne(id);
+        flash.addFlashAttribute("message", "Hotel has been deleted");
+        // redirect back to the empty form (and your table)
+        return new ModelAndView("redirect:/Hotel/hotelInfo");
+    }
 
 
     @GetMapping({""})

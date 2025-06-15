@@ -2,10 +2,10 @@ package org.example.tltravel.view.in;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
+import org.example.tltravel.view.out.HotelOutView;
 import org.hibernate.validator.constraints.Length;
 
 public class HotelInView {
-
 
     @Length(min = 2,max = 200)
     @NotBlank
@@ -71,4 +71,20 @@ public class HotelInView {
     public void setPartnerId(Long partnerId) {
         this.partnerId = partnerId;
     }
+
+    public static HotelInView empty(){
+        return new HotelInView();
+    }
+
+    public static HotelInView from(HotelOutView out) {
+        HotelInView in = new HotelInView();
+        in.setName(             out.getName()            );
+        in.setStars(            out.getStars()           );
+        in.setContacts(         out.getContacts()        );
+        in.setIsTemporaryClosed(out.getIsTemporaryClosed());
+        in.setLocationId(       out.getLocationId()      );
+        in.setPartnerId(        out.getPartnerId()       );
+        return in;
+    }
+
 }

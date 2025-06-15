@@ -27,4 +27,8 @@ public class FeedingTypeInView {
     public void setName( String name) {
         this.name = name;
     }
+
+    public static FeedingTypeInView empty(){
+        return new FeedingTypeInView();
+    }
 }

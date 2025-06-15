@@ -2,6 +2,7 @@ package org.example.tltravel.repositories;
 
 import org.example.tltravel.entities.AgentEntity;
 import org.example.tltravel.entities.HotelEntity;
+import org.example.tltravel.entities.ReservationPaymentEntity;
 import org.example.tltravel.entities.ReservationRoomsEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,5 +20,10 @@ public interface ReservationRoomsRepository extends JpaRepository<ReservationRoo
     )
     Page<ReservationRoomsEntity> findAllByReservationIdActive(@Param("reservationId") Long reservationId, Pageable pageable);
 
+    @Query("SELECT  rp from RESERVATIONROOMS rp WHERE rp.isActive=true ")
+    Page<ReservationRoomsEntity> findAllActive(Pageable pageable);
+
+    @Query("SELECT rp from RESERVATIONROOMS rp WHERE rp.id = :id AND rp.isActive=true")
+    Optional<ReservationRoomsEntity> findByIdAndIsActive(@Param("id")Long id);
 
 }

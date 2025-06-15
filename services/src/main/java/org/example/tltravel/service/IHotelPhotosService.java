@@ -8,8 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface IHotelPhotosService {
+
+    List<HotelPhotoOutView> findActiveByHotelId(Long hotelId) throws TLEntityNotFound;
 
     HotelPhotoOutView uploadPhoto(Long id, MultipartFile photo) throws TLEntityNotFound, IOException;
     HotelPhotoOutView replacePhoto(Long id,MultipartFile photo) throws TLEntityNotFound, IOException;

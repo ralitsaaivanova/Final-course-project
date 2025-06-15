@@ -13,6 +13,7 @@ import java.util.Optional;
 @Repository
 public interface HotelPhotosRepository extends JpaRepository<HotelPhotosEntity,Long> {
 
+
     @Query("SELECT p FROM HOTELPHOTOS p WHERE p.isActive=true")
     List<HotelPhotosEntity> findAllActive();
 

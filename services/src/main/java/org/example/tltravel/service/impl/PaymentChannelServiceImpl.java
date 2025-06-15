@@ -137,7 +137,7 @@ public class PaymentChannelServiceImpl implements IPaymentChannelService {
             toSave.setCreatedOn(entity.getCreatedOn());
             paymentChannelRepository.save(toSave);
 
-            PaymentChannelOutView res= modelMapper.map(entity,new TypeToken<PaymentChannelOutView>(){}.getType());
+            PaymentChannelOutView res= modelMapper.map(toSave,new TypeToken<PaymentChannelOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

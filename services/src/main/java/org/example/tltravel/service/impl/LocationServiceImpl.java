@@ -146,7 +146,7 @@ public class LocationServiceImpl implements ILocationService {
             toSave.setCreatedOn(entity.getCreatedOn());
             locationRepository.save(toSave);
 
-            LocationOutView res= modelMapper.map(entity,new TypeToken<LocationOutView>(){}.getType());
+            LocationOutView res= modelMapper.map(toSave,new TypeToken<LocationOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

@@ -137,7 +137,7 @@ public class FeedingTypeServiceImpl implements IFeedingTypeService {
             toSave.setCreatedOn(entity.getCreatedOn());
             typeRepository.save(toSave);
 
-            FeedingTypeOutView res= modelMapper.map(entity,new TypeToken<FeedingTypeOutView>(){}.getType());
+            FeedingTypeOutView res= modelMapper.map(toSave,new TypeToken<FeedingTypeOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

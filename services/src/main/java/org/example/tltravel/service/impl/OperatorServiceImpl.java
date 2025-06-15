@@ -143,7 +143,7 @@ public class OperatorServiceImpl implements IOperatorService {
             toSave.setCreatedOn(entity.getCreatedOn());
             operatorRepository.save(toSave);
 
-            OperatorOutView res= modelMapper.map(entity,new TypeToken<OperatorOutView>(){}.getType());
+            OperatorOutView res= modelMapper.map(toSave,new TypeToken<OperatorOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

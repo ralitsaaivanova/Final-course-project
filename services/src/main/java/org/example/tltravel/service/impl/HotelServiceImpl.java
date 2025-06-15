@@ -175,7 +175,7 @@ public class HotelServiceImpl implements IHotelService {
             toSave.setCreatedOn(entity.getCreatedOn());
             hotelRepository.save(toSave);
 
-            HotelOutView res= modelMapper.map(entity,new TypeToken<HotelOutView>(){}.getType());
+            HotelOutView res= modelMapper.map(toSave,new TypeToken<HotelOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

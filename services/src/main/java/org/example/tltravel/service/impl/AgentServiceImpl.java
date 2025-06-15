@@ -145,7 +145,7 @@ public class AgentServiceImpl implements IAgentService {
             toSave.setCreatedOn(entity.getCreatedOn());
             agentRepository.save(toSave);
 
-            AgentOutView res= modelMapper.map(entity,new TypeToken<AgentOutView>(){}.getType());
+            AgentOutView res= modelMapper.map(toSave,new TypeToken<AgentOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

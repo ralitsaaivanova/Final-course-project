@@ -24,6 +24,10 @@ spring:
         hidden-method:
             filter:
                 enabled: 'true'
+
+
+    thymeleaf:
+        cache: false
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         username: ${MYSQL_USER:root}

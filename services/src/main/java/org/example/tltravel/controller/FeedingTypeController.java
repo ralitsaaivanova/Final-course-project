@@ -1,9 +1,11 @@
 package org.example.tltravel.controller;
 
+import jakarta.validation.Valid;
 import org.example.tltravel.exceptions.TLEntityNotActive;
 import org.example.tltravel.exceptions.TLEntityNotFound;
 import org.example.tltravel.service.IFeedingTypeService;
 import org.example.tltravel.view.in.AgentInView;
+import org.example.tltravel.view.in.ExtrasInView;
 import org.example.tltravel.view.in.FeedingTypeInView;
 import org.example.tltravel.view.out.AgentOutView;
 import org.example.tltravel.view.out.FeedingTypeOutView;
@@ -12,17 +14,41 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/FeedingType")
 public class FeedingTypeController {
 
     @Autowired
     private IFeedingTypeService feedingTypeService;
+
+    @GetMapping("/feedingTypeInfo")
+    public ModelAndView showForm(Model model){
+
+        model.addAttribute("feedingTypeInView", FeedingTypeInView.empty());
+        return new ModelAndView ("feedingTypes");        // resolves to /templates/index.html
+    }
+
+
+    @PostMapping("/feedingTypeInfo")
+    public ModelAndView addExtra(@ModelAttribute("feedingTypeInView") @Valid FeedingTypeInView feedingTypeInView,
+                                 BindingResult bindingResult,
+                                 Model model) throws TLEntityNotFound {
+        if(bindingResult.hasErrors()){
+            return new ModelAndView("feedingTypes");
+
+        }
+        feedingTypeService.addOne(feedingTypeInView);
+        return new ModelAndView("redirect:/FeedingType/feedingTypeInfo?success");
+    }
 
     @GetMapping({""})
     public ResponseEntity<Page<FeedingTypeOutView>> getAll(@PageableDefault Pageable pageable) throws TLEntityNotFound {

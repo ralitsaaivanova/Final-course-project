@@ -134,7 +134,7 @@ public class HotelRoomServiceImpl implements IHotelRoomService {
             toSave.setCreatedOn(entity.getCreatedOn());
             hotelRoomRepository.save(toSave);
 
-            HotelRoomOutView res= modelMapper.map(entity,new TypeToken<HotelRoomOutView>(){}.getType());
+            HotelRoomOutView res= modelMapper.map(toSave,new TypeToken<HotelRoomOutView>(){}.getType());
             return res;
 
         }catch (Exception e){

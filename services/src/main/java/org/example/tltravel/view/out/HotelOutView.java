@@ -1,5 +1,7 @@
 package org.example.tltravel.view.out;
 
+import org.example.tltravel.view.in.HotelInView;
+
 public class HotelOutView {
     private Long id;
     private String name;
@@ -9,7 +11,14 @@ public class HotelOutView {
     private Long locationId;
     private Long partnerId;
 
-//    не е необходимо
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    //    не е необходимо
 //    private AgentOutView agent;
 //
 //    public AgentOutView getAgent() {
@@ -66,5 +75,9 @@ public class HotelOutView {
 
     public void setPartnerId(Long partnerId) {
         this.partnerId = partnerId;
+    }
+
+    public static HotelOutView empty(){
+        return new HotelOutView();
     }
 }
