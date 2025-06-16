@@ -48,10 +48,16 @@ public class UserServiceImpl implements IUserService {
     private UserRoleRepository userRoleRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public UserOutView createUser(UserInView inView) throws TLEntityNotFound {
         String logId = UUID.randomUUID().toString();
         log.info("{} : addUser start", logId);
+
+        // 2. Fetch Role
+        RoleEntity role = roleRepository.findByNameAndActiveTrue(inView.getRole().toUpperCase())
+                .orElseThrow(() -> new TLEntityNotFound("Role not found"));
 
         // 1. Save base user
         UserEntity user = new UserEntity();
@@ -60,9 +66,7 @@ public class UserServiceImpl implements IUserService {
         user.setActive(true);
         user = userRepository.save(user);
 
-        // 2. Fetch Role
-        RoleEntity role = roleRepository.findByNameAndActiveTrue(inView.getRole().toUpperCase())
-                .orElseThrow(() -> new TLEntityNotFound("Role not found"));
+
 
         // 3. Link user to role
         UserRoleId userRoleId = new UserRoleId(user.getId(), role.getId());
@@ -80,34 +84,40 @@ public class UserServiceImpl implements IUserService {
         switch (role.getName().toUpperCase()) {
             case "ROLE_OPERATOR" -> {
                 OperatorEntity operator = new OperatorEntity();
-                operator.setName(inView.getName());
-                operator.setPhone(inView.getPhone());
-                operator.setAddress(inView.getAddress());
+                OperatorFields operatorFields = inView.getOperatorFields();
+                operator.setName(operatorFields.getName());
+                operator.setPhone(operatorFields.getPhone());
+                operator.setAddress(operatorFields.getAddress());
                 operator.setActive(true);
+                operator.setUser(user);
                 operatorRepository.save(operator);
-                OperatorFields operatorFields = modelMapper.map(operator,OperatorFields.class);
+//                operatorFields = modelMapper.map(operator,OperatorFields.class);
                 outView.setOperator(operatorFields);
             }
             case "ROLE_AGENT" -> {
                 AgentEntity agent = new AgentEntity();
 //                agent.setUser(user);
-                agent.setName(inView.getName());
-                agent.setCommissionPercent(inView.getCommissionPercent());
+                AgentFields agentFields = inView.getAgentFields();
+                agent.setName(agentFields.getName());
+                agent.setCommissionPercent(BigDecimal.valueOf(agentFields.getCommissionPercent()));
                 agent.setActive(true);
+                agent.setUser(user);
                 agentRepository.save(agent);
 
-                AgentFields agentFields = modelMapper.map(agent,AgentFields.class);
+//                AgentFields agentFields = modelMapper.map(agent,AgentFields.class);
                 outView.setAgent(agentFields);
             }
             case "ROLE_CLIENT" -> {
                 ClientEntity client = new ClientEntity();
 //                client.setUser(user);
-                client.setName(inView.getName());
-                client.setPhone(inView.getPhone());
+                ClientFields clientFields = inView.getClientFields();
+                client.setName(clientFields.getName());
+                client.setPhone(clientFields.getPhone());
                 client.setActive(true);
+                client.setUser(user);
                 clientRepository.save(client);
 
-                ClientFields clientFields = modelMapper.map(client, ClientFields.class);
+//                ClientFields clientFields = modelMapper.map(client, ClientFields.class);
                 outView.setClient(clientFields);
             }
             default -> throw new IllegalArgumentException("Unsupported role: " + inView.getRole());

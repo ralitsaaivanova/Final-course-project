@@ -21,9 +21,9 @@ public class OperatorEntity extends BaseEntity {
     @JoinColumn(name = "OPERATOR_ID",insertable = false,updatable = false)
     private List<ReservationEntity> reservations;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "USER_ID",unique = true, nullable = false)
-//    private UserEntity user;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID",unique = true, nullable = false)
+    private UserEntity user;
 
     public OperatorEntity() {
     }
@@ -75,11 +75,11 @@ public class OperatorEntity extends BaseEntity {
     public void setAddress(String address) {
         this.address = address;
     }
-//    public UserEntity getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(UserEntity user) {
-//        this.user = user;
-//    }
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 }

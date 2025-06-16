@@ -259,44 +259,51 @@
                             <input type="password" th:field="*{password}" required/><br/><br/>
 
                             <label>Role:</label>
-                            <select id="role" th:field="*{role}" onchange="showRoleFields()" required>
-                                <option value="">-- Select Role --</option>
-                                <option value="ROLE_AGENT">Agent</option>
-                                <option value="ROLE_CLIENT">Client</option>
-                                <option value="ROLE_OPERATOR">Operator</option>
-                            </select><br/><br/>
+<!--                            <select id="role" th:field="*{role}" required>-->
+<!--                                <option value="">&#45;&#45; Select Role &#45;&#45;</option>-->
+<!--                                <option value="ROLE_AGENT">Agent</option>-->
+<!--                                <option value="ROLE_CLIENT">Client</option>-->
+<!--                                <option value="ROLE_OPERATOR">Operator</option>-->
+<!--                            </select><br/><br/>-->
+                            <div id="roleButtons" style="margin-bottom: 1rem;">
+                                <button type="button" class="role-btn" data-role="ROLE_AGENT">Agent</button>
+                                <button type="button" class="role-btn" data-role="ROLE_CLIENT">Client</button>
+                                <button type="button" class="role-btn" data-role="ROLE_OPERATOR">Operator</button>
+                            </div>
+
+                            <input type="hidden" id="role" name="role" th:field="*{role}" required />
 
                             <!-- Agent Fields -->
                             <div id="agentFields" style="display:none;">
                                 <h4>Agent Info</h4>
                                 <label>Name:</label>
-                                <input type="text" name="name"/><br/>
+                                <input type="text" th:field="*{agentFields.name}"/><br/>
 
                                 <label>Commission Percent:</label>
-                                <input type="number" name="commissionPercent" step="0.01"/><br/><br/>
+                                <input type="number" th:field="*{agentFields.commissionPercent}" step="0.01"/><br/><br/>
                             </div>
 
                             <!-- Client Fields -->
                             <div id="clientFields" style="display:none;">
                                 <h4>Client Info</h4>
                                 <label>Name:</label>
-                                <input type="text" name="name"/><br/>
+                                <input type="text" th:field="*{clientFields.name}"/><br/>
 
                                 <label>Phone:</label>
-                                <input type="text" name="phone"/><br/><br/>
+                                <input type="text" th:field="*{clientFields.phone}"/><br/><br/>
                             </div>
 
                             <!-- Operator Fields -->
                             <div id="operatorFields" style="display:none;">
                                 <h4>Operator Info</h4>
                                 <label>Name:</label>
-                                <input type="text" name="name"/><br/>
+                                <input type="text" th:field="*{operatorFields.name}"/><br/>
 
                                 <label>Phone:</label>
-                                <input type="text" name="phone"/><br/>
+                                <input type="text" th:field="*{operatorFields.phone}" /><br/>
 
                                 <label>Address:</label>
-                                <input type="text" name="address"/><br/><br/>
+                                <input type="text" th:field="*{operatorFields.address}"/><br/><br/>
                             </div>
 
                             <button type="submit">Create User</button>
@@ -966,14 +973,30 @@
 <script src="/plugins/easing/easing.js"></script>
 <script src="/js/custom.js"></script>
 <script>
-    function showRoleFields() {
-        const role = document.getElementById("role").value;
+    function setRole(role) {
+        document.getElementById("role").value = role;
+
+        document.querySelectorAll(".role-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.getAttribute("data-role") === role);
+        });
+
         document.getElementById("agentFields").style.display = role === 'ROLE_AGENT' ? 'block' : 'none';
         document.getElementById("clientFields").style.display = role === 'ROLE_CLIENT' ? 'block' : 'none';
         document.getElementById("operatorFields").style.display = role === 'ROLE_OPERATOR' ? 'block' : 'none';
     }
 
-    window.onload = showRoleFields;
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".role-btn");
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => setRole(btn.dataset.role));
+        });
+
+        // Restore pre-selected role on page load (e.g., on validation error)
+        const currentRole = document.getElementById("role").value;
+        if (currentRole) {
+            setRole(currentRole);
+        }
+    });
 </script>
 
 </body>

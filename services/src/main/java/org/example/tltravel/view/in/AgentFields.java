@@ -2,6 +2,8 @@ package org.example.tltravel.view.in;
 
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
+
 public class AgentFields {
     @NotNull
     private  String name;
@@ -17,7 +19,7 @@ public class AgentFields {
         this.name = name;
     }
 
-    public @NotNull Double getCommissionPercent() {
+    public Double getCommissionPercent() {
         return commissionPercent;
     }
 

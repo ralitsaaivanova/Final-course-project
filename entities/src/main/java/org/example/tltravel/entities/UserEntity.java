@@ -16,22 +16,22 @@ public class UserEntity extends BaseEntity{
     @Column(name = "ENABLED", nullable = false)
     private boolean enabled = true;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "USER_ROLE",
-            joinColumns = @JoinColumn(name = "USER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "ROLE_ID")
-    )
-    private List<RoleEntity> roles;
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "USER_ROLE",
+//            joinColumns = @JoinColumn(name = "USER_ID"),
+//            inverseJoinColumns = @JoinColumn(name = "ROLE_ID")
+//    )
+//    private List<RoleEntity> roles;
 //
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,  fetch = FetchType.LAZY)
-//    private AgentEntity agent;
-//
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,  fetch = FetchType.LAZY)
-//    private ClientEntity client;
-//
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,  fetch = FetchType.LAZY)
-//    private OperatorEntity operator;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,  fetch = FetchType.LAZY)
+    private AgentEntity agent;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,  fetch = FetchType.LAZY)
+    private ClientEntity client;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,  fetch = FetchType.LAZY)
+    private OperatorEntity operator;
 
     // Getters & Setters
 
@@ -61,28 +61,28 @@ public class UserEntity extends BaseEntity{
 
 
 
-//    public AgentEntity getAgent() {
-//        return agent;
-//    }
-//
-//    public void setAgent(AgentEntity agent) {
-//        this.agent = agent;
-//    }
-//
-//    public ClientEntity getClient() {
-//        return client;
-//    }
-//
-//    public void setClient(ClientEntity client) {
-//        this.client = client;
-//    }
-//
-//    public OperatorEntity getOperator() {
-//        return operator;
-//    }
-//
-//    public void setOperator(OperatorEntity operator) {
-//        this.operator = operator;
-//    }
+    public AgentEntity getAgent() {
+        return agent;
+    }
+
+    public void setAgent(AgentEntity agent) {
+        this.agent = agent;
+    }
+
+    public ClientEntity getClient() {
+        return client;
+    }
+
+    public void setClient(ClientEntity client) {
+        this.client = client;
+    }
+
+    public OperatorEntity getOperator() {
+        return operator;
+    }
+
+    public void setOperator(OperatorEntity operator) {
+        this.operator = operator;
+    }
 
 }
