@@ -2,10 +2,12 @@ package org.example.tltravel.controller;
 
 import org.example.tltravel.exceptions.TLEntityNotFound;
 import org.example.tltravel.service.IHotelPhotosService;
+import org.example.tltravel.service.IHotelService;
 import org.example.tltravel.view.out.HotelPhotoOutView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -29,9 +31,14 @@ public class HotelPhotosController {
     @Autowired
     private IHotelPhotosService service;
 
+    @Autowired
+    private IHotelService hotelService;
+
     @GetMapping("/upload")
-    public ModelAndView showUploadForm(@RequestParam("hotelId") Long hotelId, Model model) {
+    public ModelAndView showUploadForm(@RequestParam("hotelId") Long hotelId, Model model) throws TLEntityNotFound {
         model.addAttribute("hotelId", hotelId);
+        PageRequest pageable = PageRequest.of(0, 10);
+        model.addAttribute("hotels",hotelService.getAll(pageable));
         return new ModelAndView("hotelPhotos");
     }
 
@@ -54,6 +61,8 @@ public class HotelPhotosController {
     public ModelAndView listPhotos(@RequestParam("hotelId") Long hotelId, Model model) throws TLEntityNotFound {
         // You’ll need a method in your service/repo to fetch all photos by hotelId
         List<HotelPhotoOutView> photos = service.findActiveByHotelId(hotelId);
+        PageRequest pageable = PageRequest.of(0, 10);
+        model.addAttribute("hotels",hotelService.getAll(pageable));
         model.addAttribute("photos", photos);
         model.addAttribute("hotelId", hotelId);
         return new ModelAndView("hotelPhotos");

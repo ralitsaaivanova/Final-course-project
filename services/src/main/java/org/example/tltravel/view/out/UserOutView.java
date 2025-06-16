@@ -1,17 +1,21 @@
 package org.example.tltravel.view.out;
 
+import org.example.tltravel.view.in.AgentFields;
+import org.example.tltravel.view.in.ClientFields;
+import org.example.tltravel.view.in.OperatorFields;
+
 import java.util.Set;
 
 public class UserOutView {
     private Long id;
     private String email;
     private boolean enabled;
-    private Set<String> roles;   // e.g. ["ROLE_AGENT", "ROLE_CLIENT"]
+    private String role;   // e.g. ["ROLE_AGENT", "ROLE_CLIENT"]
 
     // If you want to include links to the related sub-entities, you could add:
-    private Long agentId;
-    private Long clientId;
-    private Long operatorId;
+    private AgentFields agent;
+    private ClientFields client;
+    private OperatorFields operator;
 
     public UserOutView() { }
 
@@ -36,31 +40,42 @@ public class UserOutView {
         this.enabled = enabled;
     }
 
-    public Set<String> getRoles() {
-        return roles;
+    public String getRoles() {
+        return role;
     }
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
-    }
-
-    public Long getAgentId() {
-        return agentId;
-    }
-    public void setAgentId(Long agentId) {
-        this.agentId = agentId;
+    public void setRoles(String role) {
+        this.role = role;
     }
 
-    public Long getClientId() {
-        return clientId;
-    }
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
+    public String getRole() {
+        return role;
     }
 
-    public Long getOperatorId() {
-        return operatorId;
+    public void setRole(String role) {
+        this.role = role;
     }
-    public void setOperatorId(Long operatorId) {
-        this.operatorId = operatorId;
+
+    public AgentFields getAgent() {
+        return agent;
+    }
+
+    public void setAgent(AgentFields agent) {
+        this.agent = agent;
+    }
+
+    public ClientFields getClient() {
+        return client;
+    }
+
+    public void setClient(ClientFields client) {
+        this.client = client;
+    }
+
+    public OperatorFields getOperator() {
+        return operator;
+    }
+
+    public void setOperator(OperatorFields operator) {
+        this.operator = operator;
     }
 }

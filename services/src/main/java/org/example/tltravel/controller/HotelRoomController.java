@@ -41,6 +41,7 @@ public class HotelRoomController {
 
         model.addAttribute("hotelRoomInView", HotelRoomInView.empty());
         PageRequest pageable = PageRequest.of(0, 100);
+        model.addAttribute("rooms",hotelRoomService.getAll(pageable));
         model.addAttribute("hotels", hotelService.getAll(pageable));
         return new ModelAndView ("hotelRoom");        // resolves to /templates/index.html
     }
@@ -55,7 +56,7 @@ public class HotelRoomController {
 
         }
         hotelRoomService.addOne(hotelRoomInView);
-        return new ModelAndView("redirect:/FeedingType/hotelRoomInfo?success");
+        return new ModelAndView("redirect:/HotelRoom/hotelRoomInfo?success");
     }
 
 

@@ -29,12 +29,8 @@
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-<!--                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
-<!--                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>-->
-                            <div class="user_box_login user_box_link"><a th:href="@{/login}">logout</a></div>
-
-
-                            <div class="user_box_link" >Hello, Operator One</div>
+                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>
+                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>
                         </div>
                     </div>
                 </div>
@@ -55,11 +51,37 @@
                                 <li class="main_nav_item"><a th:href="@{/index}">Home</a></li>
                                 <li class="main_nav_item"><a th:href="@{/Hotel/hotelInfo}">Hotels</a></li>
                                 <li class="main_nav_item"><a th:href="@{/offers}">Reservations</a></li>
-<!--                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>-->
-<!--                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>-->
+                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>
+                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>
                             </ul>
                         </div>
+                        <div class="content_search ml-lg-0 ml-auto">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+								<g>
+									<g>
+										<g>
+											<path class="mag_glass" fill="#FFFFFF" d="M78.438,216.78c0,57.906,22.55,112.343,63.493,153.287c40.945,40.944,95.383,63.494,153.287,63.494
+											s112.344-22.55,153.287-63.494C489.451,329.123,512,274.686,512,216.78c0-57.904-22.549-112.342-63.494-153.286
+											C407.563,22.549,353.124,0,295.219,0c-57.904,0-112.342,22.549-153.287,63.494C100.988,104.438,78.439,158.876,78.438,216.78z
+											M119.804,216.78c0-96.725,78.69-175.416,175.415-175.416s175.418,78.691,175.418,175.416
+											c0,96.725-78.691,175.416-175.416,175.416C198.495,392.195,119.804,313.505,119.804,216.78z"/>
+										</g>
+									</g>
+                                    <g>
+										<g>
+											<path class="mag_glass" fill="#FFFFFF" d="M6.057,505.942c4.038,4.039,9.332,6.058,14.625,6.058s10.587-2.019,14.625-6.058L171.268,369.98
+											c8.076-8.076,8.076-21.172,0-29.248c-8.076-8.078-21.172-8.078-29.249,0L6.057,476.693
+											C-2.019,484.77-2.019,497.865,6.057,505.942z"/>
+										</g>
+									</g>
+								</g>
+							</svg>
+                        </div>
 
+                        <form id="search_form" class="search_form bez_1">
+                            <input type="search" class="search_content_input bez_1">
+                        </form>
 
                         <div class="hamburger">
                             <i class="fa fa-bars trans_200"></i>
@@ -98,7 +120,7 @@
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
                     <!-- Image by https://unsplash.com/@anikindimitry -->
-                    <div class="home_slider_background" style="background-image:url(/images/home_slider.jpg)"></div>
+                    <div class="home_slider_background" th:style="'background-image: url(' + '@{/images/home_slider.jpg}S)'"></div>
 
                     <div class="home_slider_content text-center">
                         <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
@@ -111,7 +133,7 @@
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(/images/home_slider.jpg)"></div>
+                    <div class="home_slider_background" th:style="'background-image: url(' + '@{/images/home_slider.jpg}S)'"></div>
 
                     <div class="home_slider_content text-center">
                         <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
@@ -124,7 +146,7 @@
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(/images/home_slider.jpg)"></div>
+                    <div class="home_slider_background" th:style="'background-image: url(' + '@{/images/home_slider.jpg}S)'"></div>
 
                     <div class="home_slider_content text-center">
                         <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
@@ -180,7 +202,7 @@
 
     <!-- Search -->
 
-    <div class="search" style="height: 400px">
+    <div class="search" style="height: 360px">
 
 
         <!-- Search Contents -->
@@ -193,11 +215,12 @@
 
                     <div class="search_tabs_container">
                         <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/Hotel/hotelInfo}"><img src="/images/suitcase.png" alt=""><span>Hotels</span></a>
-                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/Extras/extrasInfo}"> <img src="/images/stats_1.png" alt="">Extras</a>
-                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/FeedingType/feedingTypeInfo}"><img style="width: 40px;height: 30px" src="/images/feedingType.png" alt="">Feeding Types</a>
-<!--                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/departure.png" alt="">Photos</a>-->
-                            <a class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img style="width: 40px;height: 30px" src="/images/rooms.png"  alt="">Rooms</a>
+
+                            <a class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/suitcase.png" alt=""><span>Hotels</span></a>
+                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color: #A5A5A5" th:href="@{/Extras/extrasInfo}"> <img src="/images/stats_1.png" alt="">Extras</a>
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/FeedingType/feedingTypeInfo}"><img src="/images/departure.png" alt="">Feeding Types</a>
+                            <!--                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/departure.png" alt="">Photos</a>-->
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img src="/images/departure.png"  alt="">Rooms</a>
 
                             <!--							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/island.png" alt="">trips</div>-->
                             <!--							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/cruise.png" alt="">cruises</div>-->
@@ -207,106 +230,118 @@
 
                     <!-- Search Panel -->
 
-                    <div class="search_panel active">
-                        <form id="search_form_2" class="search_panel_content
-						 d-flex flex-column align-items-center align-items-start"
-                              style="margin-top: 15px"
-                              th:action="@{/HotelRoom/hotelRoomInfo}"
-                              th:object="${hotelRoomInView}"
+                    <div class="search_panel active" style="height: 200px;     margin-top: 20px;">
+                        <form id="search_form_1" class="search_panel_content
+						 d-flex flex-column align-items-center align-items-start justify-content-between "
+                              th:action="@{/Hotel/hotelInfo}"
+                              th:object="${hotelInView}"
                               method="post">
 
+                            <input type="hidden" name="id" th:if="${hotelId != null}" th:value="${hotelId}" />
 
-
-                            <div class="d-flex flex-row justify-content-between align-items-end" style="gap: 10px;">
-                                <div class="search_item" style="width: 250px;">
-                                    <label for="hotelSelect" style="color:black">Hotel:</label>
-                                    <select id="hotelSelect"
-                                            class="dropdown_item_select search_input"
-                                            th:field="*{hotel_id}"
-                                            required>
-                                        <option value="" disabled
-                                                th:if="${hotelRoomInView.hotel_id == null}">-- choose a hotel --</option>
-                                        <option th:each="h : ${hotels}"
-                                                th:value="${h.id}"
-                                                th:text="${h.name}">
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div class="search_item" style="width: 200px; margin-top: 10px">
-                                    <label for="name" style="color:black">Name of room:</label>
+                            <div class="d-flex flex-row justify-content-between" style="gap: 10px;">
+                                <div class="search_item" style="width: 300px">
+                                    <label for="name" style="color:black">Hotel Name:</label>
                                     <input class="destination search_input"
                                            type="text"
                                            id="name"
                                            th:field="*{name}"
-                                           placeholder="Enter name"
+                                           placeholder="Enter hotel name"
                                            required />
                                 </div>
 
-                                <div class="search_item" style="width: 100px">
-                                    <label for="price" style="color:black">Price:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="price"
-                                           th:field="*{price}"
-                                           placeholder="Enter price"
-                                           required />
+                                <!-- STARS (e.g. 1–5) -->
+                                <div class="search_item" style="width: 80px" >
+                                    <label for="stars" style="color:black">Stars:</label>
+                                    <select id="stars"
+                                            class="dropdown_item_select search_input"
+                                            th:field="*{stars}"
+                                            required>
+                                        <option value="" disabled
+                                                th:if="${hotelInView.stars == null}">-- select stars --</option>
+                                        <option th:value="1" th:text="1"></option>
+                                        <option th:value="2" th:text="2"></option>
+                                        <option th:value="3" th:text="3"></option>
+                                        <option th:value="4" th:text="4"></option>
+                                        <option th:value="5" th:text="5"></option>
+                                    </select>
                                 </div>
+
+                                <!-- LOCATION DROPDOWN -->
+                                <div class="search_item" style="width: 120px;">
+                                    <label for="locationSelect" style="color:black">Location:</label>
+                                    <select id="locationSelect"
+                                            class="dropdown_item_select search_input"
+                                            th:field="*{locationId}"
+                                            required>
+                                        <option value="" disabled
+                                                th:if="${hotelInView.locationId == null}">-- choose a location --</option>
+                                        <option th:each="loc : ${locations}"
+                                                th:value="${loc.id}"
+                                                th:text="${loc.name}">
+                                        </option>
+                                    </select>
+                                </div>
+
+
                             </div>
 
+                            <div class="d-flex flex-row justify-content-sm-around align-content-center" style="    margin-left: 10px;
+    																											margin-top: 10px;
+    																											gap:40px">
 
-                            <div class="d-flex flex-row justify-content-between align-items-end" style="gap: 10px;">
-
-                                <div class="search_item" style="width: 100px; margin-top: 10px">
-                                    <label for="maxAdults" style="color:black">Adults:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="maxAdults"
-                                           th:field="*{maxAdults}"
-                                           placeholder="Enter adults"
-                                           required />
-                                </div>
-                                <div class="search_item" style="width: 100px; margin-top: 10px">
-                                    <label for="maxChildren" style="color:black">Children:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="maxChildren"
-                                           th:field="*{maxChildren}"
-                                           placeholder="Enter children"
-                                           required />
-                                </div>
-                                <div class="search_item" style="width: 100px; margin-top: 10px">
-                                    <label for="maxBabies" style="color:black">Babies:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="maxBabies"
-                                           th:field="*{maxBabies}"
-                                           placeholder="Enter babies"
-                                           required />
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row justify-content-center align-items-end" style="gap: 10px;margin-right: 150px">
+                                <!-- CONTACTS -->
                                 <div class="search_item">
-                                    <label for="description" style="color:black">Description:</label>
+                                    <label for="contacts" style="color:black">Contacts:</label>
                                     <textarea class="check_in search_input"
-                                              id="description"
-                                              th:field="*{description}"
-                                              placeholder="Enter description"
+                                              id="contacts"
+                                              th:field="*{contacts}"
+                                              placeholder="Address, phone, etc."
                                               rows="2"
                                               style="    width: 260px;
     													height: 100px;">
 
 									</textarea>
                                 </div>
+
+
+                                <!-- PARTNER DROPDOWN -->
+                                <div class="search_item" style="width: 160px;">
+                                    <label for="partnerSelect" style="color:black">Partner:</label>
+                                    <select id="partnerSelect"
+                                            class="dropdown_item_select search_input"
+                                            th:field="*{partnerId}"
+                                            required>
+                                        <option value="" disabled
+                                                th:if="${hotelInView.partnerId == null}">-- choose a partner --</option>
+                                        <option th:each="p : ${partners}"
+                                                th:value="${p.id}"
+                                                th:text="${p.name}">
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
+
+                            <div>
+                                <!-- IS TEMPORARILY CLOSED -->
+                                <div class="search_item d-flex flex-row align-content-center justify-content-center" style="width: 200px; margin-top: 10px;">
+                                    <input type="checkbox"
+                                           th:field="*{isTemporaryClosed}" />
+                                    <label class="align-content-center" style="color:black;padding-left: 10px; ">Temporarily Closed</label>
+
+                                </div>
+                            </div>
+
+
 
 
                             <!-- SUBMIT BUTTON -->
                             <div>
-                                <button type="submit" class="button search_button">Save Room</button>
+                                <button type="submit" class="button search_button">Save Hotel</button>
                             </div>
 
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -314,42 +349,39 @@
     </div>
 
     <!-- Intro -->
-
+Reservation
     <div class="intro">
         <div class="container">
             <table class="table table-striped table-hover" >
                 <thead class="table-primary fw-bold">
                 <tr class="fw-bold">
-                    <th   scope="col">Hotel</th>
-                    <th   scope="col">Room name</th>
-                    <th   scope="col">Price</th>
-                    <th   scope="col">Adults</th>
-                    <th   scope="col">Children</th>
-                    <th   scope="col">Babies</th>
-                    <th   scope = "col">Description</th>
-                    <th   scope = "col">Action</th>
+                    <th   scope="col">Name</th>
+                    <th   scope="col">Stars</th>
+                    <th   scope="col">Temporary Closed</th>
+                    <th   scope="col">Location</th>
+                    <th   scope="col">Partner</th>
+                    <th   scope="col">Action</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <tr th:each="room : ${rooms}">
+                <tr th:each="hotel : ${hotels}">
                     <!--                    <td th:text="${hotel.id}">1</td>-->
-                    <td th:each="hotel : ${hotels}"
-                        th:if="${room.hotel_id} == ${hotel.id}"
-                        th:text="${hotel.name}">Partner1</td>
-                    <td th:text="${room.name}">Hotel XYZ</td>
-                    <td th:text="${room.price}">Paris</td>
-                    <td th:text="${room.maxAdults}">Paris</td>
-                    <td th:text="${room.maxChildren}">Paris</td>
-                    <td th:text="${room.maxBabies}">Paris</td>
-                    <td th:text="${room.description}">Paris</td>
-
+                    <td th:text="${hotel.name}">Hotel XYZ</td>
+                    <td th:text="${hotel.stars}">Paris</td>
+                    <td th:text="${hotel.isTemporaryClosed}">Paris</td>
+                    <td th:each="loc : ${locations}"
+                        th:if="${loc.id} == ${hotel.locationId}"
+                        th:text="${loc.name}">Paris</td>
+                    <td th:each="partner : ${partners}"
+                        th:if="${partner.id} == ${hotel.partnerId}"
+                        th:text="${partner.name}">Partner1</td>
                     <td>
-                        <a th:href="@{/HotelRoom/hotelRoomInfo(id=${room.id})}">Edit</a> |
+                        <a th:href="@{/Hotel/hotelInfo(id=${hotel.id})}">Edit</a> |
                         <form
-                                th:action="@{/HotelRoom/hotelRoomInfo/delete(id=${room.id})}"
+                                th:action="@{/Hotel/hotelInfo/delete(id=${hotel.id})}"
                                 method="post"
-                                th:object="${room}"
+                                th:object="${hotel}"
                                 style="display:inline"
                         >
                             <button
@@ -359,7 +391,7 @@
                                 Delete
                             </button>  |
                         </form>
-                        <a th:href="@{/HotelRoom/list(hotelId=${room.id})}">Photos</a>
+                        <a th:href="@{/HotelPhotos/list(hotelId=${hotel.id})}">Photos</a>
                     </td>
                 </tr>
                 </tbody>
@@ -367,7 +399,19 @@
         </div>
     </div>
 
+
     <!-- CTA -->
+
+    <!--    <div>-->
+    <!--        <a th:if="${page.hasPrevious()}"-->
+    <!--           th:href="@{/Hotel/list(page=${page.number - 1},size=${page.size})}">Previous</a>-->
+
+    <!--        <span>Page [[${page.number + 1}]]</span>-->
+
+    <!--        <a th:if="${page.hasNext()}"-->
+    <!--           th:href="@{/Hotel/list(page=${page.number + 1},size=${page.size})}">Next</a>-->
+    <!--    </div>-->
+
 
 
     <!-- Offers -->

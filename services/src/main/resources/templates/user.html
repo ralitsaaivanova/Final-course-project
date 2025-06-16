@@ -20,21 +20,28 @@
                         <div class="phone">+45 345 3324 56789</div>
                         <div class="social">
                             <ul class="social_list">
-                                <li class="social_list_item"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                <li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li class="social_list_item"><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                <li class="social_list_item"><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-                                <li class="social_list_item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li class="social_list_item"><a href="#"><i class="fa fa-pinterest"
+                                                                            aria-hidden="true"></i></a></li>
+                                <li class="social_list_item"><a href="#"><i class="fa fa-facebook"
+                                                                            aria-hidden="true"></i></a></li>
+                                <li class="social_list_item"><a href="#"><i class="fa fa-twitter"
+                                                                            aria-hidden="true"></i></a></li>
+                                <li class="social_list_item"><a href="#"><i class="fa fa-dribbble"
+                                                                            aria-hidden="true"></i></a></li>
+                                <li class="social_list_item"><a href="#"><i class="fa fa-behance"
+                                                                            aria-hidden="true"></i></a></li>
+                                <li class="social_list_item"><a href="#"><i class="fa fa-linkedin"
+                                                                            aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-<!--                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
-<!--                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>-->
+                            <!--                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
+                            <!--                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a>-->
+                            <!--                            </div>-->
                             <div class="user_box_login user_box_link"><a th:href="@{/login}">logout</a></div>
 
 
-                            <div class="user_box_link" >Hello, Operator One</div>
+                            <div class="user_box_link">Hello, Admin</div>
                         </div>
                     </div>
                 </div>
@@ -55,11 +62,12 @@
                                 <li class="main_nav_item"><a th:href="@{/index}">Home</a></li>
                                 <li class="main_nav_item"><a th:href="@{/Hotel/hotelInfo}">Hotels</a></li>
                                 <li class="main_nav_item"><a th:href="@{/offers}">Reservations</a></li>
-<!--                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>-->
-<!--                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>-->
+                                <li class="main_nav_item"><a th:href="@{/offers}">Admin Panel</a></li>
+
+                                <!--                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>-->
+                                <!--                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>-->
                             </ul>
                         </div>
-
 
                         <div class="hamburger">
                             <i class="fa fa-bars trans_200"></i>
@@ -73,7 +81,9 @@
 
     <div class="menu trans_500">
         <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-            <div class="menu_close_container"><div class="menu_close"></div></div>
+            <div class="menu_close_container">
+                <div class="menu_close"></div>
+            </div>
             <div class="logo menu_logo"><a href="#"><img src="/images/logo.png" alt=""></a></div>
             <ul>
                 <li class="menu_item"><a href="#">home</a></li>
@@ -98,39 +108,51 @@
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
                     <!-- Image by https://unsplash.com/@anikindimitry -->
-                    <div class="home_slider_background" style="background-image:url(/images/home_slider.jpg)"></div>
+                    <div class="home_slider_background"
+                         th:style="'background-image: url(' + '@{/images/home_slider.jpg}S)'"></div>
 
                     <div class="home_slider_content text-center">
-                        <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
+                        <div class="home_slider_content_inner" data-animation-in="flipInX"
+                             data-animation-out="animate-out fadeOut">
                             <h1>discover</h1>
                             <h1>the world</h1>
-                            <div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explore now<span></span><span></span><span></span></a></div>
+                            <div class="button home_slider_button">
+                                <div class="button_bcg"></div>
+                                <a href="#">explore now<span></span><span></span><span></span></a></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(/images/home_slider.jpg)"></div>
+                    <div class="home_slider_background"
+                         th:style="'background-image: url(' + '@{/images/home_slider.jpg}S)'"></div>
 
                     <div class="home_slider_content text-center">
-                        <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
+                        <div class="home_slider_content_inner" data-animation-in="flipInX"
+                             data-animation-out="animate-out fadeOut">
                             <h1>discover</h1>
                             <h1>the world</h1>
-                            <div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explore now<span></span><span></span><span></span></a></div>
+                            <div class="button home_slider_button">
+                                <div class="button_bcg"></div>
+                                <a href="#">explore now<span></span><span></span><span></span></a></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(/images/home_slider.jpg)"></div>
+                    <div class="home_slider_background"
+                         th:style="'background-image: url(' + '@{/images/home_slider.jpg}S)'"></div>
 
                     <div class="home_slider_content text-center">
-                        <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
+                        <div class="home_slider_content_inner" data-animation-in="flipInX"
+                             data-animation-out="animate-out fadeOut">
                             <h1>discover</h1>
                             <h1>the world</h1>
-                            <div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explore now<span></span><span></span><span></span></a></div>
+                            <div class="button home_slider_button">
+                                <div class="button_bcg"></div>
+                                <a href="#">explore now<span></span><span></span><span></span></a></div>
                         </div>
                     </div>
                 </div>
@@ -139,8 +161,10 @@
 
             <!-- Home Slider Nav - Prev -->
             <div class="home_slider_nav home_slider_prev">
-                <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
+                <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
+                     xml:space="preserve">
 					<defs>
 						<linearGradient id='home_grad_prev'>
 							<stop offset='0%' stop-color='#fa9e1b'/>
@@ -157,8 +181,10 @@
 
             <!-- Home Slider Nav - Next -->
             <div class="home_slider_nav home_slider_next">
-                <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
+                <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
+                     xml:space="preserve">
 					<defs>
 						<linearGradient id='home_grad_next'>
 							<stop offset='0%' stop-color='#fa9e1b'/>
@@ -180,7 +206,7 @@
 
     <!-- Search -->
 
-    <div class="search" style="height: 400px">
+    <div class="search" style="height: 360px">
 
 
         <!-- Search Contents -->
@@ -193,11 +219,22 @@
 
                     <div class="search_tabs_container">
                         <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/Hotel/hotelInfo}"><img src="/images/suitcase.png" alt=""><span>Hotels</span></a>
-                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/Extras/extrasInfo}"> <img src="/images/stats_1.png" alt="">Extras</a>
-                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/FeedingType/feedingTypeInfo}"><img style="width: 40px;height: 30px" src="/images/feedingType.png" alt="">Feeding Types</a>
-<!--                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/departure.png" alt="">Photos</a>-->
-                            <a class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img style="width: 40px;height: 30px" src="/images/rooms.png"  alt="">Rooms</a>
+
+                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img
+                                    src="/images/suitcase.png" alt=""><span>Locations</span></a>
+                            <a class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"
+                               style="color: #A5A5A5" th:href="@{/Extras/extrasInfo}"> <img src="/images/stats_1.png"
+                                                                                            alt="">Users</a>
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"
+                               style="color:#A5A5A5;" th:href="@{/FeedingType/feedingTypeInfo}"><img
+                                    style="width: 40px;height: 30px" src="/images/feedingType.png" alt="">Payment Types</a>
+                            <!--                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/departure.png" alt="">Photos</a>-->
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"
+                               style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img
+                                    style="width: 40px;height: 30px" src="/images/rooms.png" alt="">Payment Channel</a>
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"
+                               style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img
+                                    style="width: 40px;height: 30px" src="/images/rooms.png" alt="">Reservation Payment</a>
 
                             <!--							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/island.png" alt="">trips</div>-->
                             <!--							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/cruise.png" alt="">cruises</div>-->
@@ -207,106 +244,168 @@
 
                     <!-- Search Panel -->
 
-                    <div class="search_panel active">
-                        <form id="search_form_2" class="search_panel_content
-						 d-flex flex-column align-items-center align-items-start"
-                              style="margin-top: 15px"
-                              th:action="@{/HotelRoom/hotelRoomInfo}"
-                              th:object="${hotelRoomInView}"
-                              method="post">
+                    <div class="search_panel active" style="height: 200px;     margin-top: 20px;">
 
 
+                        <h2 style="color: black">Create New User</h2>
+                        <form id="search_form_1" class="search_panel_content
+						    d-flex flex-column align-items-center align-items-start justify-content-between "
+                              th:action="@{/Users/addUser}"
+                              method="post" th:object="${userInView}">
+                            <label>Email:</label>
+                            <input type="email" th:field="*{email}" required/><br/><br/>
 
-                            <div class="d-flex flex-row justify-content-between align-items-end" style="gap: 10px;">
-                                <div class="search_item" style="width: 250px;">
-                                    <label for="hotelSelect" style="color:black">Hotel:</label>
-                                    <select id="hotelSelect"
-                                            class="dropdown_item_select search_input"
-                                            th:field="*{hotel_id}"
-                                            required>
-                                        <option value="" disabled
-                                                th:if="${hotelRoomInView.hotel_id == null}">-- choose a hotel --</option>
-                                        <option th:each="h : ${hotels}"
-                                                th:value="${h.id}"
-                                                th:text="${h.name}">
-                                        </option>
-                                    </select>
-                                </div>
+                            <label>Password:</label>
+                            <input type="password" th:field="*{password}" required/><br/><br/>
 
-                                <div class="search_item" style="width: 200px; margin-top: 10px">
-                                    <label for="name" style="color:black">Name of room:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="name"
-                                           th:field="*{name}"
-                                           placeholder="Enter name"
-                                           required />
-                                </div>
+                            <label>Role:</label>
+                            <select id="role" th:field="*{role}" onchange="showRoleFields()" required>
+                                <option value="">-- Select Role --</option>
+                                <option value="ROLE_AGENT">Agent</option>
+                                <option value="ROLE_CLIENT">Client</option>
+                                <option value="ROLE_OPERATOR">Operator</option>
+                            </select><br/><br/>
 
-                                <div class="search_item" style="width: 100px">
-                                    <label for="price" style="color:black">Price:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="price"
-                                           th:field="*{price}"
-                                           placeholder="Enter price"
-                                           required />
-                                </div>
+                            <!-- Agent Fields -->
+                            <div id="agentFields" style="display:none;">
+                                <h4>Agent Info</h4>
+                                <label>Name:</label>
+                                <input type="text" name="name"/><br/>
+
+                                <label>Commission Percent:</label>
+                                <input type="number" name="commissionPercent" step="0.01"/><br/><br/>
                             </div>
 
+                            <!-- Client Fields -->
+                            <div id="clientFields" style="display:none;">
+                                <h4>Client Info</h4>
+                                <label>Name:</label>
+                                <input type="text" name="name"/><br/>
 
-                            <div class="d-flex flex-row justify-content-between align-items-end" style="gap: 10px;">
-
-                                <div class="search_item" style="width: 100px; margin-top: 10px">
-                                    <label for="maxAdults" style="color:black">Adults:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="maxAdults"
-                                           th:field="*{maxAdults}"
-                                           placeholder="Enter adults"
-                                           required />
-                                </div>
-                                <div class="search_item" style="width: 100px; margin-top: 10px">
-                                    <label for="maxChildren" style="color:black">Children:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="maxChildren"
-                                           th:field="*{maxChildren}"
-                                           placeholder="Enter children"
-                                           required />
-                                </div>
-                                <div class="search_item" style="width: 100px; margin-top: 10px">
-                                    <label for="maxBabies" style="color:black">Babies:</label>
-                                    <input class="destination search_input"
-                                           type="text"
-                                           id="maxBabies"
-                                           th:field="*{maxBabies}"
-                                           placeholder="Enter babies"
-                                           required />
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row justify-content-center align-items-end" style="gap: 10px;margin-right: 150px">
-                                <div class="search_item">
-                                    <label for="description" style="color:black">Description:</label>
-                                    <textarea class="check_in search_input"
-                                              id="description"
-                                              th:field="*{description}"
-                                              placeholder="Enter description"
-                                              rows="2"
-                                              style="    width: 260px;
-    													height: 100px;">
-
-									</textarea>
-                                </div>
+                                <label>Phone:</label>
+                                <input type="text" name="phone"/><br/><br/>
                             </div>
 
+                            <!-- Operator Fields -->
+                            <div id="operatorFields" style="display:none;">
+                                <h4>Operator Info</h4>
+                                <label>Name:</label>
+                                <input type="text" name="name"/><br/>
 
-                            <!-- SUBMIT BUTTON -->
-                            <div>
-                                <button type="submit" class="button search_button">Save Room</button>
+                                <label>Phone:</label>
+                                <input type="text" name="phone"/><br/>
+
+                                <label>Address:</label>
+                                <input type="text" name="address"/><br/><br/>
                             </div>
 
+                            <button type="submit">Create User</button>
                         </form>
+
+
+                        <!--                            <input type="hidden" name="id" th:if="${hotelId != null}" th:value="${hotelId}" />-->
+
+                        <!--                            <div class="d-flex flex-row justify-content-between" style="gap: 10px;">-->
+                        <!--                                <div class="search_item" style="width: 300px">-->
+                        <!--                                    <label for="name" style="color:black">Hotel Name:</label>-->
+                        <!--                                    <input class="destination search_input"-->
+                        <!--                                           type="text"-->
+                        <!--                                           id="name"-->
+                        <!--                                           th:field="*{name}"-->
+                        <!--                                           placeholder="Enter hotel name"-->
+                        <!--                                           required />-->
+                        <!--                                </div>-->
+
+                        <!--                                &lt;!&ndash; STARS (e.g. 1–5) &ndash;&gt;-->
+                        <!--                                <div class="search_item" style="width: 80px" >-->
+                        <!--                                    <label for="stars" style="color:black">Stars:</label>-->
+                        <!--                                    <select id="stars"-->
+                        <!--                                            class="dropdown_item_select search_input"-->
+                        <!--                                            th:field="*{stars}"-->
+                        <!--                                            required>-->
+                        <!--                                        <option value="" disabled-->
+                        <!--                                                th:if="${hotelInView.stars == null}">&#45;&#45; select stars &#45;&#45;</option>-->
+                        <!--                                        <option th:value="1" th:text="1"></option>-->
+                        <!--                                        <option th:value="2" th:text="2"></option>-->
+                        <!--                                        <option th:value="3" th:text="3"></option>-->
+                        <!--                                        <option th:value="4" th:text="4"></option>-->
+                        <!--                                        <option th:value="5" th:text="5"></option>-->
+                        <!--                                    </select>-->
+                        <!--                                </div>-->
+
+                        <!--                                &lt;!&ndash; LOCATION DROPDOWN &ndash;&gt;-->
+                        <!--                                <div class="search_item" style="width: 120px;">-->
+                        <!--                                    <label for="locationSelect" style="color:black">Location:</label>-->
+                        <!--                                    <select id="locationSelect"-->
+                        <!--                                            class="dropdown_item_select search_input"-->
+                        <!--                                            th:field="*{locationId}"-->
+                        <!--                                            required>-->
+                        <!--                                        <option value="" disabled-->
+                        <!--                                                th:if="${hotelInView.locationId == null}">&#45;&#45; choose a location &#45;&#45;</option>-->
+                        <!--                                        <option th:each="loc : ${locations}"-->
+                        <!--                                                th:value="${loc.id}"-->
+                        <!--                                                th:text="${loc.name}">-->
+                        <!--                                        </option>-->
+                        <!--                                    </select>-->
+                        <!--                                </div>-->
+
+
+                        <!--                            </div>-->
+
+                        <!--                            <div class="d-flex flex-row justify-content-sm-around align-content-center" style="    margin-left: 10px;-->
+                        <!--    																											margin-top: 10px;-->
+                        <!--    																											gap:40px">-->
+
+                        <!--                                &lt;!&ndash; CONTACTS &ndash;&gt;-->
+                        <!--                                <div class="search_item">-->
+                        <!--                                    <label for="contacts" style="color:black">Contacts:</label>-->
+                        <!--                                    <textarea class="check_in search_input"-->
+                        <!--                                              id="contacts"-->
+                        <!--                                              th:field="*{contacts}"-->
+                        <!--                                              placeholder="Address, phone, etc."-->
+                        <!--                                              rows="2"-->
+                        <!--                                              style="    width: 260px;-->
+                        <!--    													height: 100px;">-->
+
+                        <!--									</textarea>-->
+                        <!--                                </div>-->
+
+
+                        <!--                                &lt;!&ndash; PARTNER DROPDOWN &ndash;&gt;-->
+                        <!--                                <div class="search_item" style="width: 160px;">-->
+                        <!--                                    <label for="partnerSelect" style="color:black">Partner:</label>-->
+                        <!--                                    <select id="partnerSelect"-->
+                        <!--                                            class="dropdown_item_select search_input"-->
+                        <!--                                            th:field="*{partnerId}"-->
+                        <!--                                            required>-->
+                        <!--                                        <option value="" disabled-->
+                        <!--                                                th:if="${hotelInView.partnerId == null}">&#45;&#45; choose a partner &#45;&#45;</option>-->
+                        <!--                                        <option th:each="p : ${partners}"-->
+                        <!--                                                th:value="${p.id}"-->
+                        <!--                                                th:text="${p.name}">-->
+                        <!--                                        </option>-->
+                        <!--                                    </select>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+
+                        <!--                            <div>-->
+                        <!--                                &lt;!&ndash; IS TEMPORARILY CLOSED &ndash;&gt;-->
+                        <!--                                <div class="search_item d-flex flex-row align-content-center justify-content-center" style="width: 200px; margin-top: 10px;">-->
+                        <!--                                    <input type="checkbox"-->
+                        <!--                                           th:field="*{isTemporaryClosed}" />-->
+                        <!--                                    <label class="align-content-center" style="color:black;padding-left: 10px; ">Temporarily Closed</label>-->
+
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+
+
+                        <!--                            &lt;!&ndash; SUBMIT BUTTON &ndash;&gt;-->
+                        <!--                            <div>-->
+                        <!--                                <button type="submit" class="button search_button">Save Hotel</button>-->
+                        <!--                            </div>-->
+
+                        <!--                        </form>-->
+
                     </div>
                 </div>
             </div>
@@ -317,57 +416,68 @@
 
     <div class="intro">
         <div class="container">
-            <table class="table table-striped table-hover" >
-                <thead class="table-primary fw-bold">
-                <tr class="fw-bold">
-                    <th   scope="col">Hotel</th>
-                    <th   scope="col">Room name</th>
-                    <th   scope="col">Price</th>
-                    <th   scope="col">Adults</th>
-                    <th   scope="col">Children</th>
-                    <th   scope="col">Babies</th>
-                    <th   scope = "col">Description</th>
-                    <th   scope = "col">Action</th>
-                </tr>
-                </thead>
+<!--            <table class="table table-striped table-hover">-->
+<!--                <thead class="table-primary fw-bold">-->
+<!--                <tr class="fw-bold">-->
+<!--                    <th scope="col">Name</th>-->
+<!--                    <th scope="col">Stars</th>-->
+<!--                    <th scope="col">Temporary Closed</th>-->
+<!--                    <th scope="col">Location</th>-->
+<!--                    <th scope="col">Partner</th>-->
+<!--                    <th scope="col">Action</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
 
-                <tbody>
-                <tr th:each="room : ${rooms}">
-                    <!--                    <td th:text="${hotel.id}">1</td>-->
-                    <td th:each="hotel : ${hotels}"
-                        th:if="${room.hotel_id} == ${hotel.id}"
-                        th:text="${hotel.name}">Partner1</td>
-                    <td th:text="${room.name}">Hotel XYZ</td>
-                    <td th:text="${room.price}">Paris</td>
-                    <td th:text="${room.maxAdults}">Paris</td>
-                    <td th:text="${room.maxChildren}">Paris</td>
-                    <td th:text="${room.maxBabies}">Paris</td>
-                    <td th:text="${room.description}">Paris</td>
-
-                    <td>
-                        <a th:href="@{/HotelRoom/hotelRoomInfo(id=${room.id})}">Edit</a> |
-                        <form
-                                th:action="@{/HotelRoom/hotelRoomInfo/delete(id=${room.id})}"
-                                method="post"
-                                th:object="${room}"
-                                style="display:inline"
-                        >
-                            <button
-                                    type="submit"
-                                    class="btn btn-link p-0 align-baseline"
-                                    onclick="return confirm('Delete hotel [[${hotel.name}]]');">
-                                Delete
-                            </button>  |
-                        </form>
-                        <a th:href="@{/HotelRoom/list(hotelId=${room.id})}">Photos</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+<!--                <tbody>-->
+<!--                <tr th:each="hotel : ${hotels}">-->
+<!--                    &lt;!&ndash;                    <td th:text="${hotel.id}">1</td>&ndash;&gt;-->
+<!--                    <td th:text="${hotel.name}">Hotel XYZ</td>-->
+<!--                    <td th:text="${hotel.stars}">Paris</td>-->
+<!--                    <td th:text="${hotel.isTemporaryClosed}">Paris</td>-->
+<!--                    <td th:each="loc : ${locations}"-->
+<!--                        th:if="${loc.id} == ${hotel.locationId}"-->
+<!--                        th:text="${loc.name}">Paris-->
+<!--                    </td>-->
+<!--                    <td th:each="partner : ${partners}"-->
+<!--                        th:if="${partner.id} == ${hotel.partnerId}"-->
+<!--                        th:text="${partner.name}">Partner1-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <a th:href="@{/Hotel/hotelInfo(id=${hotel.id})}">Edit</a> |-->
+<!--                        <form-->
+<!--                                th:action="@{/Hotel/hotelInfo/delete(id=${hotel.id})}"-->
+<!--                                method="post"-->
+<!--                                th:object="${hotel}"-->
+<!--                                style="display:inline"-->
+<!--                        >-->
+<!--                            <button-->
+<!--                                    type="submit"-->
+<!--                                    class="btn btn-link p-0 align-baseline"-->
+<!--                                    onclick="return confirm('Delete hotel [[${hotel.name}]]');">-->
+<!--                                Delete-->
+<!--                            </button>-->
+<!--                            |-->
+<!--                        </form>-->
+<!--                        <a th:href="@{/HotelPhotos/list(hotelId=${hotel.id})}">Photos</a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
         </div>
     </div>
 
+
     <!-- CTA -->
+
+    <!--    <div>-->
+    <!--        <a th:if="${page.hasPrevious()}"-->
+    <!--           th:href="@{/Hotel/list(page=${page.number - 1},size=${page.size})}">Previous</a>-->
+
+    <!--        <span>Page [[${page.number + 1}]]</span>-->
+
+    <!--        <a th:if="${page.hasNext()}"-->
+    <!--           th:href="@{/Hotel/list(page=${page.number + 1},size=${page.size})}">Next</a>-->
+    <!--    </div>-->
 
 
     <!-- Offers -->
@@ -388,7 +498,8 @@
                             <div class="col-lg-6">
                                 <div class="offers_image_container">
                                     <!-- Image by https://unsplash.com/@kensuarez -->
-                                    <div class="offers_image_background" style="background-image:url(/images/offer_1.jpg)"></div>
+                                    <div class="offers_image_background"
+                                         style="background-image:url(/images/offer_1.jpg)"></div>
                                     <div class="offer_name"><a href="#">grand castle</a></div>
                                 </div>
                             </div>
@@ -402,7 +513,8 @@
                                         <i></i>
                                         <i></i>
                                     </div>
-                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
+                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit
+                                        amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
                                     <div class="offers_icons">
                                         <ul class="offers_icons_list">
                                             <li class="offers_icons_item"><img src="/images/post.png" alt=""></li>
@@ -425,7 +537,8 @@
                             <div class="col-lg-6">
                                 <div class="offers_image_container">
                                     <!-- Image by Egzon Bytyqi -->
-                                    <div class="offers_image_background" style="background-image:url(/images/offer_2.jpg)"></div>
+                                    <div class="offers_image_background"
+                                         style="background-image:url(/images/offer_2.jpg)"></div>
                                     <div class="offer_name"><a href="#">turkey hills</a></div>
                                 </div>
                             </div>
@@ -439,7 +552,8 @@
                                         <i></i>
                                         <i></i>
                                     </div>
-                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
+                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit
+                                        amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
                                     <div class="offers_icons">
                                         <ul class="offers_icons_list">
                                             <li class="offers_icons_item"><img src="/images/post.png" alt=""></li>
@@ -462,7 +576,8 @@
                             <div class="col-lg-6">
                                 <div class="offers_image_container">
                                     <!-- Image by https://unsplash.com/@nevenkrcmarek -->
-                                    <div class="offers_image_background" style="background-image:url(/images/offer_3.jpg)"></div>
+                                    <div class="offers_image_background"
+                                         style="background-image:url(/images/offer_3.jpg)"></div>
                                     <div class="offer_name"><a href="#">island dream</a></div>
                                 </div>
                             </div>
@@ -476,7 +591,8 @@
                                         <i></i>
                                         <i></i>
                                     </div>
-                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
+                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit
+                                        amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
                                     <div class="offers_icons">
                                         <ul class="offers_icons_list">
                                             <li class="offers_icons_item"><img src="/images/post.png" alt=""></li>
@@ -499,7 +615,8 @@
                             <div class="col-lg-6">
                                 <div class="offers_image_container">
                                     <!-- Image by https://unsplash.com/@mantashesthaven -->
-                                    <div class="offers_image_background" style="background-image:url(/images/offer_4.jpg)"></div>
+                                    <div class="offers_image_background"
+                                         style="background-image:url(/images/offer_4.jpg)"></div>
                                     <div class="offer_name"><a href="#">travel light</a></div>
                                 </div>
                             </div>
@@ -513,7 +630,8 @@
                                         <i></i>
                                         <i></i>
                                     </div>
-                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
+                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit
+                                        amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
                                     <div class="offers_icons">
                                         <ul class="offers_icons_list">
                                             <li class="offers_icons_item"><img src="/images/post.png" alt=""></li>
@@ -554,7 +672,8 @@
                             <!-- Testimonial Item -->
                             <div class="owl-item">
                                 <div class="test_item">
-                                    <div class="test_image"><img src="/images/test_1.jpg" alt="https://unsplash.com/@anniegray"></div>
+                                    <div class="test_image"><img src="/images/test_1.jpg"
+                                                                 alt="https://unsplash.com/@anniegray"></div>
                                     <div class="test_icon"><img src="/images/backpack.png" alt=""></div>
                                     <div class="test_content_container">
                                         <div class="test_content">
@@ -563,7 +682,8 @@
                                                 <div class="test_date">May 24, 2017</div>
                                             </div>
                                             <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti.
+                                                In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -572,7 +692,8 @@
                             <!-- Testimonial Item -->
                             <div class="owl-item">
                                 <div class="test_item">
-                                    <div class="test_image"><img src="/images/test_2.jpg" alt="https://unsplash.com/@tschax"></div>
+                                    <div class="test_image"><img src="/images/test_2.jpg"
+                                                                 alt="https://unsplash.com/@tschax"></div>
                                     <div class="test_icon"><img src="/images/island_t.png" alt=""></div>
                                     <div class="test_content_container">
                                         <div class="test_content">
@@ -581,7 +702,8 @@
                                                 <div class="test_date">May 24, 2017</div>
                                             </div>
                                             <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti.
+                                                In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -590,7 +712,8 @@
                             <!-- Testimonial Item -->
                             <div class="owl-item">
                                 <div class="test_item">
-                                    <div class="test_image"><img src="/images/test_3.jpg" alt="https://unsplash.com/@seefromthesky"></div>
+                                    <div class="test_image"><img src="/images/test_3.jpg"
+                                                                 alt="https://unsplash.com/@seefromthesky"></div>
                                     <div class="test_icon"><img src="/images/kayak.png" alt=""></div>
                                     <div class="test_content_container">
                                         <div class="test_content">
@@ -599,7 +722,8 @@
                                                 <div class="test_date">May 24, 2017</div>
                                             </div>
                                             <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti.
+                                                In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -617,7 +741,8 @@
                                                 <div class="test_date">May 24, 2017</div>
                                             </div>
                                             <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti.
+                                                In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -635,7 +760,8 @@
                                                 <div class="test_date">May 24, 2017</div>
                                             </div>
                                             <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti.
+                                                In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -653,7 +779,8 @@
                                                 <div class="test_date">May 24, 2017</div>
                                             </div>
                                             <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti.
+                                                In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -663,8 +790,10 @@
 
                         <!-- Testimonials Slider Nav - Prev -->
                         <div class="test_slider_nav test_slider_prev">
-                            <svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                 width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
+                            <svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
+                                 xml:space="preserve">
 								<defs>
 									<linearGradient id='test_grad_prev'>
 										<stop offset='0%' stop-color='#fa9e1b'/>
@@ -681,8 +810,10 @@
 
                         <!-- Testimonials Slider Nav - Next -->
                         <div class="test_slider_nav test_slider_next">
-                            <svg version="1.1" id="Layer_7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                 width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
+                            <svg version="1.1" id="Layer_7" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
+                                 xml:space="preserve">
 								<defs>
 									<linearGradient id='test_grad_next'>
 										<stop offset='0%' stop-color='#fa9e1b'/>
@@ -717,7 +848,8 @@
                 <!-- Trending Item -->
                 <div class="col-lg-3 col-sm-6">
                     <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="/images/trend_1.png" alt="https://unsplash.com/@fransaraco"></div>
+                        <div class="trending_image"><img src="/images/trend_1.png"
+                                                         alt="https://unsplash.com/@fransaraco"></div>
                         <div class="trending_content">
                             <div class="trending_title"><a href="#">grand hotel</a></div>
                             <div class="trending_price">From $182</div>
@@ -729,7 +861,8 @@
                 <!-- Trending Item -->
                 <div class="col-lg-3 col-sm-6">
                     <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="/images/trend_2.png" alt="https://unsplash.com/@grovemade"></div>
+                        <div class="trending_image"><img src="/images/trend_2.png"
+                                                         alt="https://unsplash.com/@grovemade"></div>
                         <div class="trending_content">
                             <div class="trending_title"><a href="#">mars hotel</a></div>
                             <div class="trending_price">From $182</div>
@@ -741,7 +874,8 @@
                 <!-- Trending Item -->
                 <div class="col-lg-3 col-sm-6">
                     <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="/images/trend_3.png" alt="https://unsplash.com/@jbriscoe"></div>
+                        <div class="trending_image"><img src="/images/trend_3.png" alt="https://unsplash.com/@jbriscoe">
+                        </div>
                         <div class="trending_content">
                             <div class="trending_title"><a href="#">queen hotel</a></div>
                             <div class="trending_price">From $182</div>
@@ -753,7 +887,8 @@
                 <!-- Trending Item -->
                 <div class="col-lg-3 col-sm-6">
                     <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="/images/trend_4.png" alt="https://unsplash.com/@oowgnuj"></div>
+                        <div class="trending_image"><img src="/images/trend_4.png" alt="https://unsplash.com/@oowgnuj">
+                        </div>
                         <div class="trending_content">
                             <div class="trending_title"><a href="#">mars hotel</a></div>
                             <div class="trending_price">From $182</div>
@@ -765,7 +900,8 @@
                 <!-- Trending Item -->
                 <div class="col-lg-3 col-sm-6">
                     <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="/images/trend_5.png" alt="https://unsplash.com/@mindaugas"></div>
+                        <div class="trending_image"><img src="/images/trend_5.png"
+                                                         alt="https://unsplash.com/@mindaugas"></div>
                         <div class="trending_content">
                             <div class="trending_title"><a href="#">grand hotel</a></div>
                             <div class="trending_price">From $182</div>
@@ -777,7 +913,8 @@
                 <!-- Trending Item -->
                 <div class="col-lg-3 col-sm-6">
                     <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="/images/trend_6.png" alt="https://unsplash.com/@itsnwa"></div>
+                        <div class="trending_image"><img src="/images/trend_6.png" alt="https://unsplash.com/@itsnwa">
+                        </div>
                         <div class="trending_content">
                             <div class="trending_title"><a href="#">mars hotel</a></div>
                             <div class="trending_price">From $182</div>
@@ -789,7 +926,8 @@
                 <!-- Trending Item -->
                 <div class="col-lg-3 col-sm-6">
                     <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="/images/trend_7.png" alt="https://unsplash.com/@rktkn"></div>
+                        <div class="trending_image"><img src="/images/trend_7.png" alt="https://unsplash.com/@rktkn">
+                        </div>
                         <div class="trending_content">
                             <div class="trending_title"><a href="#">queen hotel</a></div>
                             <div class="trending_price">From $182</div>
@@ -801,7 +939,8 @@
                 <!-- Trending Item -->
                 <div class="col-lg-3 col-sm-6">
                     <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="/images/trend_8.png" alt="https://unsplash.com/@thoughtcatalog"></div>
+                        <div class="trending_image"><img src="/images/trend_8.png"
+                                                         alt="https://unsplash.com/@thoughtcatalog"></div>
                         <div class="trending_content">
                             <div class="trending_title"><a href="#">mars hotel</a></div>
                             <div class="trending_price">From $182</div>
@@ -815,7 +954,6 @@
     </div>
 
 
-
     <!-- Footer -->
     <div id="footer" th:replace="~{fragments/footer}">
     </div>
@@ -827,6 +965,16 @@
 <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="/plugins/easing/easing.js"></script>
 <script src="/js/custom.js"></script>
+<script>
+    function showRoleFields() {
+        const role = document.getElementById("role").value;
+        document.getElementById("agentFields").style.display = role === 'ROLE_AGENT' ? 'block' : 'none';
+        document.getElementById("clientFields").style.display = role === 'ROLE_CLIENT' ? 'block' : 'none';
+        document.getElementById("operatorFields").style.display = role === 'ROLE_OPERATOR' ? 'block' : 'none';
+    }
+
+    window.onload = showRoleFields;
+</script>
 
 </body>
 

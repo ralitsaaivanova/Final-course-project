@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity,Long> {
 
-    @Query("SELECT r from ROLE r WHERE r.name = :name ")
-    Optional<RoleEntity> findByName(@Param("name")String name);
+    @Query("SELECT r from ROLE r WHERE r.name = :name AND  r.isActive=true  ")
+    Optional<RoleEntity> findByNameAndActiveTrue(@Param("name")String name);
     List<RoleEntity> findAllByNameIn(Collection<String> roleNames);
 }

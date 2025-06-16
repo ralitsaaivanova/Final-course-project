@@ -29,8 +29,13 @@
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>
-                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>
+<!--                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
+<!--                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a>-->
+<!--                            </div>-->
+                            <div class="user_box_login user_box_link"><a th:href="@{/login}">logout</a></div>
+
+
+                            <div class="user_box_link" >Hello, Operator One</div>
                         </div>
                     </div>
                 </div>
@@ -51,8 +56,8 @@
                                 <li class="main_nav_item"><a th:href="@{/index}">Home</a></li>
                                 <li class="main_nav_item"><a th:href="@{/Hotel/hotelInfo}">Hotels</a></li>
                                 <li class="main_nav_item"><a th:href="@{/offers}">Reservations</a></li>
-                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>
-                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>
+<!--                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>-->
+<!--                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>-->
                             </ul>
                         </div>
                         <div class="content_search ml-lg-0 ml-auto">
@@ -216,11 +221,11 @@
                     <div class="search_tabs_container">
                         <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 
-                            <a class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/suitcase.png" alt=""><span>Hotel</span></a>
-                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color: #A5A5A5" th:href="@{/Extras/extrasInfo}"> <img src="/images/departure.png" alt="">Extras</a>
-                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/FeedingType/feedingTypeInfo}"><img src="/images/departure.png" alt="">Feeding Types</a>
+                            <a class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/suitcase.png" alt=""><span>Hotels</span></a>
+                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color: #A5A5A5" th:href="@{/Extras/extrasInfo}"> <img src="/images/stats_1.png" alt="">Extras</a>
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/FeedingType/feedingTypeInfo}"><img style="width: 40px;height: 30px" src="/images/feedingType.png" alt="">Feeding Types</a>
 <!--                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/departure.png" alt="">Photos</a>-->
-                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img src="/images/departure.png"  alt="">Rooms</a>
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img style="width: 40px;height: 30px" src="/images/rooms.png"  alt="">Rooms</a>
 
                             <!--							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/island.png" alt="">trips</div>-->
                             <!--							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/cruise.png" alt="">cruises</div>-->

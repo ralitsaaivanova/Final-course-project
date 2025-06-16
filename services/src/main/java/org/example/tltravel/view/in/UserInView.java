@@ -15,37 +15,52 @@ public class UserInView {
     @NotBlank
     private String password;
 
-    @NotEmpty
-    private Set<String> roles;   // e.g. ["ROLE_AGENT","ROLE_CLIENT"]
+    @NotBlank
+    private String role; // Only used to determine what extra data to store
 
-    private ClientFields client;
+    private String name;
+    private String phone;
+    private String address;
+    private BigDecimal commissionPercent;
 
-    private OperatorFields operator;
-
-    private AgentFields agent;
-
-    public ClientFields getClient() {
-        return client;
+    public String getName() {
+        return name;
     }
 
-    public void setClient(ClientFields client) {
-        this.client = client;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public OperatorFields getOperator() {
-        return operator;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setOperator(OperatorFields operator) {
-        this.operator = operator;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public AgentFields getAgent() {
-        return agent;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAgent(AgentFields agent) {
-        this.agent = agent;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public BigDecimal getCommissionPercent() {
+        return commissionPercent;
+    }
+
+    public void setCommissionPercent(BigDecimal commissionPercent) {
+        this.commissionPercent = commissionPercent;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {
@@ -64,13 +79,10 @@ public class UserInView {
         this.password = password;
     }
 
-    public Set<String> getRoles() {
-        return roles;
+    public static UserInView empty(){
+        return new UserInView();
     }
 
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
-    }
 
 
 }

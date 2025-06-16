@@ -67,8 +67,13 @@
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>
-                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>
+                            <!--                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
+                            <!--                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a>-->
+                            <!--                            </div>-->
+                            <div class="user_box_login user_box_link"><a th:href="@{/login}">logout</a></div>
+
+
+                            <div class="user_box_link" >Hello, Operator One</div>
                         </div>
                     </div>
                 </div>
@@ -89,32 +94,9 @@
                                 <li class="main_nav_item"><a th:href="@{/index}">Home</a></li>
                                 <li class="main_nav_item"><a th:href="@{/Hotel/hotelInfo}">Hotels</a></li>
                                 <li class="main_nav_item"><a th:href="@{/offers}">Reservations</a></li>
-                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>
-                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>
+<!--                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>-->
+<!--                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>-->
                             </ul>
-                        </div>
-                        <div class="content_search ml-lg-0 ml-auto">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                 width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-								<g>
-									<g>
-										<g>
-											<path class="mag_glass" fill="#FFFFFF" d="M78.438,216.78c0,57.906,22.55,112.343,63.493,153.287c40.945,40.944,95.383,63.494,153.287,63.494
-											s112.344-22.55,153.287-63.494C489.451,329.123,512,274.686,512,216.78c0-57.904-22.549-112.342-63.494-153.286
-											C407.563,22.549,353.124,0,295.219,0c-57.904,0-112.342,22.549-153.287,63.494C100.988,104.438,78.439,158.876,78.438,216.78z
-											M119.804,216.78c0-96.725,78.69-175.416,175.415-175.416s175.418,78.691,175.418,175.416
-											c0,96.725-78.691,175.416-175.416,175.416C198.495,392.195,119.804,313.505,119.804,216.78z"/>
-										</g>
-									</g>
-                                    <g>
-										<g>
-											<path class="mag_glass" fill="#FFFFFF" d="M6.057,505.942c4.038,4.039,9.332,6.058,14.625,6.058s10.587-2.019,14.625-6.058L171.268,369.98
-											c8.076-8.076,8.076-21.172,0-29.248c-8.076-8.078-21.172-8.078-29.249,0L6.057,476.693
-											C-2.019,484.77-2.019,497.865,6.057,505.942z"/>
-										</g>
-									</g>
-								</g>
-							</svg>
                         </div>
 
                         <form id="search_form" class="search_form bez_1">
@@ -240,7 +222,7 @@
 
     <!-- Search -->
 
-    <div class="search" style="height: 360px">
+    <div class="search" style="height: 450px">
 
 
         <!-- Search Contents -->
@@ -255,10 +237,10 @@
                         <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 
                             <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/Hotel/hotelInfo}"><img src="/images/suitcase.png" alt=""><span>Add Hotel</span></a>
-                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color: #A5A5A5" th:href="@{/Extras/extrasInfo}"> <img src="/images/departure.png" alt="">Extras</a>
-                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/FeedingType/feedingTypeInfo}"><img src="/images/departure.png" alt="">Feeding Types</a>
+                            <a class="search_tab  d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color: #A5A5A5" th:href="@{/Extras/extrasInfo}"> <img src="/images/stats_1.png" alt="">Extras</a>
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/FeedingType/feedingTypeInfo}"><img style="width: 40px;height: 30px" src="/images/feedingType.png" alt="">Feeding Types</a>
                             <a class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/departure.png" alt="">Photos</a>
-                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img src="/images/departure.png"  alt="">Rooms</a>
+                            <a class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start" style="color:#A5A5A5;" th:href="@{/HotelRoom/hotelRoomInfo}"><img style="width: 40px;height: 30px" src="/images/rooms.png"  alt="">Rooms</a>
 
                             <!--							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/island.png" alt="">trips</div>-->
                             <!--							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="/images/cruise.png" alt="">cruises</div>-->
@@ -268,27 +250,37 @@
 
                     <!-- Search Panel -->
 
-                    <div class="search_panel active d-flex flex-row" style="margin-top: 20px;">
-                        <div class="d-flex flex-row justify-content-center align-content-center">
-                            <h1>Upload Photo for Hotel [[${hotelId}]]</h1>
+                    <div class="search_panel active d-flex flex-column " style="margin-top: 20px; ">
+                        <div class="d-flex flex-column justify-content-center align-content-center" style="color: black">
+                            <h1 style="text-align: center;">Upload Photo for Hotel <span th:each="hotel : ${hotels}"
+                                                                                         th:if="${hotel.id} == ${hotelId}"
+                                                                                         th:text="${hotel.name}">Paris </span></h1>
 
                             <div th:if="${message}" style="color:green;">[[${message}]]</div>
                             <div th:if="${error}" style="color:red;">[[${error}]]</div>
 
-                            <form th:action="@{/HotelPhotos/upload}" method="post" enctype="multipart/form-data">
+                            <form style="    display: flex;justify-content: center; margin-bottom: 15px" th:action="@{/HotelPhotos/upload}" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="hotelId" th:value="${hotelId}"/>
                                 <input type="file" name="file" accept="image/*" required/>
-                                <button type="submit">Upload</button>
+                                <button style="font-size: 13px;
+                                                font-weight: 700;
+                                                color: #fff;
+                                                text-transform: uppercase;
+                                                line-height: 30px;
+                                                padding-left: 15px;
+                                                padding-right: 15px;
+                                                background: #31124b;
+                                                border-radius: 15px;" type="submit">Upload</button>
                             </form>
                         </div>
 
                         <div>
-                            <p>
-                                <a th:href="@{/HotelPhotos/list(hotelId=${hotelId})}">Back to photo list</a>
-                            </p>
+<!--                            <p>-->
+<!--                                <a th:href="@{/HotelPhotos/list(hotelId=${hotelId})}">Back to photo list</a>-->
+<!--                            </p>-->
 
-                            <div th:if="${photos.size() == 0}">
-                                <p>No photos yet.</p>
+                            <div  th:if="${photos.size() == 0}">
+                                <p style="color: black">No photos yet.</p>
                             </div>
                         </div>
 
@@ -296,15 +288,18 @@
 
 
 
-                        <div class="flex-row justify-content-center align-content-center gap-2" th:each="photo : ${photos}">
+                        <div class="d-flex flex-row justify-content-center align-content-center gap-2" style="gap: 20px" >
                             <!-- pull down the binary via your existing REST GET /HotelPhotos/{id} -->
-                            <img th:src="@{/HotelPhotos/{id}(id=${photo.id})}"
-                                 th:alt="'Photo ' + ${photo.id}"
-                                 style="max-width:200px; max-height:200px;"/>
-                            <p>
-                                <a th:href="@{/HotelPhotos/delete/{id}(id=${photo.id},hotelId=${hotelId})}"
-                                   onclick="return confirm('Delete photo?');">Delete</a>
-                            </p>
+                            <div  th:each="photo : ${photos}" >
+                                <img th:src="@{/HotelPhotos/{id}(id=${photo.id})}"
+                                     th:alt="'Photo ' + ${photo.id}"
+                                     style="max-width:200px; max-height:200px;"/>
+                                <p>
+                                    <a th:href="@{/HotelPhotos/delete/{id}(id=${photo.id},hotelId=${hotelId})}"
+                                       onclick="return confirm('Delete photo?');" style="color: black">Delete</a>
+                                </p>
+                            </div>
+
                         </div>
                     </div>
 

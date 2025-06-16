@@ -6,6 +6,7 @@ import org.example.tltravel.entities.ReservationEntity;
 import org.example.tltravel.entities.ReservationRoomsEntity;
 import org.example.tltravel.exceptions.TLEntityNotActive;
 import org.example.tltravel.exceptions.TLEntityNotFound;
+import org.example.tltravel.repositories.HotelRepository;
 import org.example.tltravel.repositories.HotelRoomRepository;
 import org.example.tltravel.repositories.ReservationRepository;
 import org.example.tltravel.repositories.ReservationRoomsRepository;
@@ -42,6 +43,9 @@ public class ReservationServiceImpl implements IReservationService {
     @Autowired
     private ReservationRoomsRepository reservationRoomsRepository;
 
+    @Autowired
+    private HotelRepository hotelRepository;
+
     @Override
     public Optional<ReservationOutView> getById(Long id) throws TLEntityNotFound {
         String logId = UUID.randomUUID().toString();
@@ -50,6 +54,7 @@ public class ReservationServiceImpl implements IReservationService {
 
         try{
             Optional<ReservationEntity> entity = reservationRepository.findByIdAndIsActive(id);
+
             Optional<ReservationOutView> res = modelMapper.map(entity,new TypeToken<Optional<ReservationOutView>>(){}.getType());
 
             return res;

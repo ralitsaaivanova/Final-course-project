@@ -18,9 +18,9 @@ public class ClientEntity extends BaseEntity{
     @JoinColumn(name="CLIENT_ID",insertable = false,updatable = false)
     private List<ReservationEntity> reservations;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID", unique = true,nullable = false)
-    private UserEntity user;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "USER_ID", unique = true,nullable = false)
+//    private UserEntity user;
 
 
     public ClientEntity() {
@@ -58,12 +58,12 @@ public class ClientEntity extends BaseEntity{
         this.phone = phone;
     }
 
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
+//    public UserEntity getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(UserEntity user) {
+//        this.user = user;
+//    }
 
 }

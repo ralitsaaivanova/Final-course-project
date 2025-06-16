@@ -13,5 +13,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     @Query("SELECT  u from USER u WHERE u.email = :email ")
     Optional<UserEntity> findByEmail(@Param("email")String email);
 
-    long countByRoles_Name(String roleName);
+//    long countByRoles_Name(String roleName);
 }

@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 public interface IUserService {
-    UserOutView createUser(UserInView inView);
+    UserOutView createUser(UserInView inView) throws TLEntityNotFound;
     Page<UserOutView> getAll(Pageable pageable) throws TLEntityNotFound;
 
     Optional<UserOutView> getById(Long id) throws TLEntityNotFound;
