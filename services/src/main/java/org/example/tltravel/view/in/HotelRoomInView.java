@@ -5,6 +5,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import org.example.tltravel.entities.HotelEntity;
+import org.example.tltravel.view.out.HotelOutView;
+import org.example.tltravel.view.out.HotelRoomOutView;
 import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
@@ -85,5 +87,17 @@ public class HotelRoomInView {
 
     public static HotelRoomInView empty(){
         return new HotelRoomInView();
+    }
+
+    public static HotelRoomInView from(HotelRoomOutView out) {
+        HotelRoomInView in = new HotelRoomInView();
+        in.setName(out.getName());
+        in.setDescription(out.getDescription());
+        in.setHotel_id(out.getHotel_id());
+        in.setMaxAdults(out.getMaxAdults());
+        in.setMaxBabies(out.getMaxBabies());
+        in.setMaxChildren(out.getMaxChildren());
+        in.setPrice(out.getPrice());
+        return in;
     }
 }

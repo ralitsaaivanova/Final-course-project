@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+	  >
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -34,7 +35,11 @@
 							<div class="user_box_login user_box_link"><a th:href="@{/login}">logout</a></div>
 
 
-							<div class="user_box_link" >Hello, Operator One</div>
+
+							<div class="user_box_link" >Hello,
+								<th:block sec:authorize="isAuthenticated()">
+									<th:block sec:authentication="name"></th:block>
+								</th:block></div>
 						</div>
 					</div>
 				</div>
@@ -53,9 +58,10 @@
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
 								<li class="main_nav_item"><a th:href="@{/index}">Home</a></li>
-								<li class="main_nav_item"><a th:href="@{/Hotel/hotelInfo}">Hotels</a></li>
-<!--								<li class="main_nav_item"><a th:href="@{/Agent/${session.agentId}/HotelView}">Agent Hotels</a></li>-->
-								<li class="main_nav_item"><a th:href="@{/offers}">Reservations</a></li>
+								<li class="main_nav_item" sec:authorize="hasAnyRole('ADMIN','OPERATOR')"><a th:href="@{/Hotel/hotelInfo}">Hotels</a></li>
+								<li class="main_nav_item" sec:authorize="hasAnyRole('AGENT')"><a th:href="@{/Agent/${agentId}/HotelView}">Agent Hotels</a></li>
+								<li class="main_nav_item" sec:authorize="hasAnyRole('ADMIN','OPERATOR')"><a th:href="@{/offers}">Reservations</a></li>
+								<li class="main_nav_item" sec:authorize="hasRole('ADMIN')"><a th:href="@{/offers}">Admin Panel</a></li>
 <!--								<li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>-->
 <!--								<li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>-->
 							</ul>

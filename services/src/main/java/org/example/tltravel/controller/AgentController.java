@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/Agent")
 public class AgentController {
 
@@ -38,51 +39,15 @@ public class AgentController {
         model.addAttribute("agents",service.getAll(pageable));
 
         model.addAttribute("agentId", agentId);
-        session.setAttribute("agentId", agentId);
+//        session.setAttribute("agentId", agentId);
         return new ModelAndView("agentHotels");
     }
 
-//
-//    @GetMapping({""})
-//    public ResponseEntity<Page<AgentOutView>> getAll(@PageableDefault Pageable pageable) throws TLEntityNotFound {
-//        Page<AgentOutView> res = service.getAll(pageable);
+
+//    @GetMapping({"{id}/Hotel"})
+//    public ResponseEntity<Page<HotelOutView>> getAllHotels(@PathVariable ("id") Long id,
+//                                                     @PageableDefault Pageable pageable) throws TLEntityNotFound {
+//        Page<HotelOutView> res = service.getAllHotels(id,pageable);
 //        return ResponseEntity.ok(res);
 //    }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<AgentOutView> getById(@PathVariable Long id) throws TLEntityNotFound {
-//        Optional<AgentOutView> res = service.getById(id);
-//        if(res.isEmpty()){
-//            return ResponseEntity.noContent().build();
-//        }
-//        return ResponseEntity.ok(res.get());
-//    }
-//
-//    @PostMapping({""})
-//    public ResponseEntity<AgentOutView> addOne(@Validated @RequestBody AgentInView hotel) throws TLEntityNotFound {
-//        AgentOutView agentOutView = service.addOne(hotel);
-//        return ResponseEntity.ok(agentOutView);
-//    }
-//
-//    @DeleteMapping ("/{id}")
-//    public ResponseEntity deleteById(@PathVariable Long id) throws TLEntityNotFound, TLEntityNotActive {
-//        service.deleteOne(id);
-//        return ResponseEntity.ok().build();
-//
-//    }
-//
-//
-//    @PutMapping("/{id}")
-//    public ResponseEntity<AgentOutView> updateOne(@PathVariable ("id") Long id, @Validated @RequestBody AgentInView agent) throws TLEntityNotFound {
-//        AgentOutView re = service.update(id,agent);
-//        return  ResponseEntity.ok(re);
-//    }
-
-
-    @GetMapping({"{id}/Hotel"})
-    public ResponseEntity<Page<HotelOutView>> getAllHotels(@PathVariable ("id") Long id,
-                                                     @PageableDefault Pageable pageable) throws TLEntityNotFound {
-        Page<HotelOutView> res = service.getAllHotels(id,pageable);
-        return ResponseEntity.ok(res);
-    }
 }

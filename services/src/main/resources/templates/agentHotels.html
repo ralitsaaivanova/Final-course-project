@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -29,12 +29,16 @@
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-<!--                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
+                            <!--							<div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
+                            <!--							<div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>-->
                             <div class="user_box_login user_box_link"><a th:href="@{/login}">logout</a></div>
 
 
-                            <div class="user_box_link" >Hello, Agent</div>
-<!--                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>-->
+
+                            <div class="user_box_link" >Hello,
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <th:block sec:authentication="name"></th:block>
+                                </th:block></div>
                         </div>
                     </div>
                 </div>
@@ -53,7 +57,7 @@
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
                                 <li class="main_nav_item"><a th:href="@{/index}">Home</a></li>
-                                <li class="main_nav_item"><a th:href="@{/Agent/${session.agentId}/HotelView}">Hotels</a></li>
+                                <li class="main_nav_item"><a th:href="@{/Agent/${agentId}/HotelView}">Hotels</a></li>
 <!--                                <li class="main_nav_item"><a th:href="@{/}">Reservations</a></li>-->
 <!--                                <li class="main_nav_item"><a th:href="@{/blog}">MEnu</a></li>-->
 <!--                                <li class="main_nav_item"><a th:href="@{/contact}">contact</a></li>-->

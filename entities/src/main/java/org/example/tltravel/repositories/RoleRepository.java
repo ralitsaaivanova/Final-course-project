@@ -17,5 +17,8 @@ public interface RoleRepository extends JpaRepository<RoleEntity,Long> {
 
     @Query("SELECT r from ROLE r WHERE r.name = :name AND  r.isActive=true  ")
     Optional<RoleEntity> findByNameAndActiveTrue(@Param("name")String name);
+
+    @Query("SELECT r from ROLE r WHERE r.id = :id AND  r.isActive=true  ")
+    Optional<RoleEntity> findByIdAndActiveTrue(@Param("id")Long id);
     List<RoleEntity> findAllByNameIn(Collection<String> roleNames);
 }

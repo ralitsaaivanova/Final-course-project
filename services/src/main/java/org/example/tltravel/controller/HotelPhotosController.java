@@ -59,7 +59,7 @@ public class HotelPhotosController {
     // List all active photos for a hotel
     @GetMapping("/list")
     public ModelAndView listPhotos(@RequestParam("hotelId") Long hotelId, Model model) throws TLEntityNotFound {
-        // You’ll need a method in your service/repo to fetch all photos by hotelId
+
         List<HotelPhotoOutView> photos = service.findActiveByHotelId(hotelId);
         PageRequest pageable = PageRequest.of(0, 10);
         model.addAttribute("hotels",hotelService.getAll(pageable));

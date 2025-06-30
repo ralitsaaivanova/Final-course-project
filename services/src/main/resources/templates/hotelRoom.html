@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -29,12 +29,16 @@
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-<!--                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
-<!--                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>-->
+                            <!--							<div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
+                            <!--							<div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>-->
                             <div class="user_box_login user_box_link"><a th:href="@{/login}">logout</a></div>
 
 
-                            <div class="user_box_link" >Hello, Operator One</div>
+
+                            <div class="user_box_link" >Hello,
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <th:block sec:authentication="name"></th:block>
+                                </th:block></div>
                         </div>
                     </div>
                 </div>
@@ -215,6 +219,8 @@
                               th:object="${hotelRoomInView}"
                               method="post">
 
+                            <input type="hidden" name="id" th:if="${hotelRoomId != null}" th:value="${hotelRoomId}" />
+
 
 
                             <div class="d-flex flex-row justify-content-between align-items-end" style="gap: 10px;">
@@ -359,7 +365,7 @@
                                 Delete
                             </button>  |
                         </form>
-                        <a th:href="@{/HotelRoom/list(hotelId=${room.id})}">Photos</a>
+                        <a th:href="@{/RoomPhotos/list(hotelRoomId=${room.id},hotelId=${room.hotel_id})}">Photos</a>
                     </td>
                 </tr>
                 </tbody>

@@ -17,6 +17,7 @@ public interface RoomPhotosRepository extends JpaRepository<RoomPhotosEntity,Lon
     @Query("SELECT p FROM ROOMPHOTOS p WHERE p.isActive=true and p.hotelRoomId=:id")
     List<RoomPhotosEntity> findAllByHotelAndIsActive(@Param("id")Long id);
 
+
     @Query("SELECT p FROM ROOMPHOTOS  p WHERE p.isActive=true and p.id=:id")
     Optional<RoomPhotosEntity> findByIdAndIsActive(@Param("id") Long id);
 

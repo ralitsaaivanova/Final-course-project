@@ -37,7 +37,7 @@
 <!--</html>-->
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -67,13 +67,16 @@
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-                            <!--                            <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
-                            <!--                            <div class="user_box_register user_box_link"><a th:href="@{/register}">register</a>-->
-                            <!--                            </div>-->
+                            <!--							<div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>-->
+                            <!--							<div class="user_box_register user_box_link"><a th:href="@{/register}">register</a></div>-->
                             <div class="user_box_login user_box_link"><a th:href="@{/login}">logout</a></div>
 
 
-                            <div class="user_box_link" >Hello, Operator One</div>
+
+                            <div class="user_box_link" >Hello,
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <th:block sec:authentication="name"></th:block>
+                                </th:block></div>
                         </div>
                     </div>
                 </div>

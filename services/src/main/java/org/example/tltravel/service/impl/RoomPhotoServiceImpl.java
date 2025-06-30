@@ -23,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -37,6 +39,30 @@ public class RoomPhotoServiceImpl implements IRoomPhotosService {
 
     @Autowired
     private HotelRoomRepository hotelRoomRepository;
+
+
+    @Override
+    public List<RoomPhotoOutView> findActiveByRoomId(Long hotelRoomId) throws TLEntityNotFound {
+        String logId = UUID.randomUUID().toString();
+        log.info("{} : findActiveByHotelId start", logId);
+        log.debug("{} : params: hotelId: {}", logId, hotelRoomId);
+
+        // ensure hotel exists (reuse your hotelRepository check)
+        hotelRoomRepository.findByIdAndIsActive(hotelRoomId)
+                .orElseThrow(() -> new TLEntityNotFound("Hotel not found: " + hotelRoomId));
+
+        List<RoomPhotosEntity> entities = roomPhotosRepository
+                .findAllByHotelAndIsActive(hotelRoomId);
+
+        // map to DTOs
+        List<RoomPhotoOutView> photos = modelMapper.map(
+                entities,
+                new TypeToken<List<RoomPhotoOutView>>() {}.getType()
+        );
+
+        log.info("{} : findActiveByHotelId finished – found {} photos", logId, photos.size());
+        return photos;
+    }
     @Override
     public RoomPhotoOutView uploadPhoto(Long id, MultipartFile file) throws TLEntityNotFound, IOException {
         String logId = UUID.randomUUID().toString();

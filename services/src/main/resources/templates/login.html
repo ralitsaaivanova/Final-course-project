@@ -1,14 +1,3 @@
-<!--
-=========================================================
-Login Form Bootstrap 1
-=========================================================
-
-Product Page: https://uifresh.net
-Copyright 2021 UIFresh (https://uifresh.net)
-Coded by UIFresh
-
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
@@ -17,10 +6,10 @@ The above copyright notice and this permission notice shall be included in all c
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" th:href="@{/assets/img/favicon.png}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" th:href="@{/assets/css/all.min.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/uf-style.css}">
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/uf-style.css">
     <title>Login Form Bootstrap 1 by UIFresh</title>
   </head>
   <body>
@@ -29,20 +18,30 @@ The above copyright notice and this permission notice shall be included in all c
         <a href="https://uifresh.net/"><img th:src="@{/assets/img/logo-fb.png}" alt="" width="100" height="100"></a>
       <h1 class="text-white h3">Account Login</h1>
       </div>
-      <form class="mt-4">
+      <form class="mt-4" th:method="POST"
+            th:action="@{/login}">
         <div class="input-group uf-input-group input-group-lg mb-3">
           <span class="input-group-text fa fa-user"></span>
-          <input type="text" class="form-control" placeholder="Email address">
+          <input
+                 name="email"
+                 th:value="${email}"
+                 id="email"
+                  type="text" class="form-control" placeholder="Email address">
         </div>
         <div class="input-group uf-input-group input-group-lg mb-3">
           <span class="input-group-text fa fa-lock"></span>
-          <input type="password" class="form-control" placeholder="Password">
+          <input name="password"
+                 id="password"
+                  type="password" class="form-control" placeholder="Password">
         </div>
         <div class="d-flex mb-3 justify-content-center">
           <div class="form-check">
             <input type="checkbox" class="form-check-input uf-form-check-input" id="exampleCheck1">
             <label class="form-check-label text-white" for="exampleCheck1">Remember Me</label>
           </div>
+          <p th:if="${bad_credentials}" class="errors alert alert-danger">
+            Invalid username or password.
+          </p>
         </div>
         <div class="d-grid mb-4">
           <button type="submit" class="btn uf-btn-primary btn-lg">Login</button>
@@ -53,7 +52,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- JavaScript -->
 
     <!-- Separate Popper and Bootstrap JS -->
-    <script th:src="@{/assets/js/popper.min.js}"></script>
-    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
   </body>
 </html>

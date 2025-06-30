@@ -6,10 +6,12 @@ import org.example.tltravel.view.in.UserInView;
 import org.example.tltravel.view.out.UserOutView;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 
 import java.util.Optional;
 
 public interface IUserService {
+    Authentication login(String email);
     UserOutView createUser(UserInView inView) throws TLEntityNotFound;
     Page<UserOutView> getAll(Pageable pageable) throws TLEntityNotFound;
 

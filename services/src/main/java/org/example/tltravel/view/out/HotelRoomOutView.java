@@ -8,7 +8,8 @@ import org.example.tltravel.entities.HotelEntity;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public class HotelRoomOutView {
+public class
+HotelRoomOutView {
     private Long id;
     private Long hotel_id;
     private String name;

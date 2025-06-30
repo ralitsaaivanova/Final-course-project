@@ -24,6 +24,8 @@ public class UserEntity extends BaseEntity{
 //    )
 //    private List<RoleEntity> roles;
 //
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserRoleEntity> userRoles;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true,  fetch = FetchType.LAZY)
     private AgentEntity agent;
 

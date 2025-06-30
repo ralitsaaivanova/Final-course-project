@@ -1,9 +1,6 @@
 package org.example.tltravel.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
+import jakarta.persistence.*;
 import org.example.tltravel.compositekeys.UserRoleId;
 
 import java.util.Objects;
@@ -19,6 +16,13 @@ public class UserRoleEntity extends AuditableEntity{
     @Column(name = "ROLE_ID",nullable = false)
     private Long role_id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+    private UserEntity user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ROLE_ID", insertable = false, updatable = false)
+    private RoleEntity role;
     public UserRoleEntity() {
 
     }

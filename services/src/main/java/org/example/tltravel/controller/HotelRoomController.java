@@ -8,8 +8,10 @@ import org.example.tltravel.service.IHotelRoomService;
 import org.example.tltravel.service.IHotelService;
 import org.example.tltravel.view.in.AgentInView;
 import org.example.tltravel.view.in.FeedingTypeInView;
+import org.example.tltravel.view.in.HotelInView;
 import org.example.tltravel.view.in.HotelRoomInView;
 import org.example.tltravel.view.out.AgentOutView;
+import org.example.tltravel.view.out.HotelOutView;
 import org.example.tltravel.view.out.HotelRoomOutView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +25,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -37,9 +40,18 @@ public class HotelRoomController {
 
 
     @GetMapping("/hotelRoomInfo")
-    public ModelAndView showForm(Model model) throws TLEntityNotFound {
+    public ModelAndView showForm(@RequestParam(value="id", required=false) Long id,Model model) throws TLEntityNotFound {
 
-        model.addAttribute("hotelRoomInView", HotelRoomInView.empty());
+        HotelRoomInView inView = HotelRoomInView.empty();
+        if (id != null) {
+            // fetch existing
+            HotelRoomOutView out = hotelRoomService
+                    .getById(id)
+                    .orElseThrow(() -> new TLEntityNotFound("Hotel not found: " + id));
+            inView = HotelRoomInView.from(out);
+        }
+        model.addAttribute("hotelRoomInView", inView);
+        model.addAttribute("hotelRoomId",id);
         PageRequest pageable = PageRequest.of(0, 100);
         model.addAttribute("rooms",hotelRoomService.getAll(pageable));
         model.addAttribute("hotels", hotelService.getAll(pageable));
@@ -48,14 +60,22 @@ public class HotelRoomController {
 
 
     @PostMapping("/hotelRoomInfo")
-    public ModelAndView addExtra(@ModelAttribute("hotelRoomInView") @Valid HotelRoomInView hotelRoomInView,
+    public ModelAndView addExtra(@RequestParam(value = "id", required = false) Long id,
+                                 @ModelAttribute("hotelRoomInView") @Valid HotelRoomInView hotelRoomInView,
                                  BindingResult bindingResult,
+                                 RedirectAttributes flash,
                                  Model model) throws TLEntityNotFound {
         if(bindingResult.hasErrors()){
             return new ModelAndView("hotelRoom");
 
         }
-        hotelRoomService.addOne(hotelRoomInView);
+        if (id != null) {
+            hotelRoomService.update(id, hotelRoomInView);
+            flash.addFlashAttribute("message", "Hotel updated");
+        } else {
+            hotelRoomService.addOne(hotelRoomInView);
+            flash.addFlashAttribute("message", "Hotel created");
+        }
         return new ModelAndView("redirect:/HotelRoom/hotelRoomInfo?success");
     }
 

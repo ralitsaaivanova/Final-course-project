@@ -99,40 +99,40 @@ public class HotelController {
     }
 
 
-    @GetMapping({""})
-    public ResponseEntity<Page<HotelOutView>> getAll(@PageableDefault Pageable pageable) throws TLEntityNotFound {
-        Page<HotelOutView> res = service.getAll(pageable);
-        return ResponseEntity.ok(res);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<HotelOutView> getById(@PathVariable Long id) throws TLEntityNotFound {
-        Optional<HotelOutView> res = service.getById(id);
-        if(res.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(res.get());
-    }
-
-    @PostMapping({""})
-    public ResponseEntity<HotelOutView> addOne(@Validated @RequestBody HotelInView hotel) throws TLEntityNotFound {
-        HotelOutView hotelOutView = service.addOne(hotel);
-        return ResponseEntity.ok(hotelOutView);
-    }
-
-    @DeleteMapping ("/{id}")
-    public ResponseEntity deleteById(@PathVariable Long id) throws TLEntityNotFound, TLEntityNotActive {
-        service.deleteOne(id);
-        return ResponseEntity.ok().build();
-
-    }
-
-
-    @PutMapping("/{id}")
-    public ResponseEntity<HotelOutView> updateOne(@PathVariable ("id") Long id, @Validated @RequestBody HotelInView hotel) throws TLEntityNotFound {
-        HotelOutView re = service.update(id,hotel);
-        return  ResponseEntity.ok(re);
-    }
+//    @GetMapping({""})
+//    public ResponseEntity<Page<HotelOutView>> getAll(@PageableDefault Pageable pageable) throws TLEntityNotFound {
+//        Page<HotelOutView> res = service.getAll(pageable);
+//        return ResponseEntity.ok(res);
+//    }
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<HotelOutView> getById(@PathVariable Long id) throws TLEntityNotFound {
+//        Optional<HotelOutView> res = service.getById(id);
+//        if(res.isEmpty()){
+//            return ResponseEntity.noContent().build();
+//        }
+//        return ResponseEntity.ok(res.get());
+//    }
+//
+//    @PostMapping({""})
+//    public ResponseEntity<HotelOutView> addOne(@Validated @RequestBody HotelInView hotel) throws TLEntityNotFound {
+//        HotelOutView hotelOutView = service.addOne(hotel);
+//        return ResponseEntity.ok(hotelOutView);
+//    }
+//
+//    @DeleteMapping ("/{id}")
+//    public ResponseEntity deleteById(@PathVariable Long id) throws TLEntityNotFound, TLEntityNotActive {
+//        service.deleteOne(id);
+//        return ResponseEntity.ok().build();
+//
+//    }
+//
+//
+//    @PutMapping("/{id}")
+//    public ResponseEntity<HotelOutView> updateOne(@PathVariable ("id") Long id, @Validated @RequestBody HotelInView hotel) throws TLEntityNotFound {
+//        HotelOutView re = service.update(id,hotel);
+//        return  ResponseEntity.ok(re);
+//    }
 
     @GetMapping("/{id}/Extras")
     public ResponseEntity<List<ExtrasOutView>> getAllExtras(@PathVariable Long id) throws TLEntityNotFound {

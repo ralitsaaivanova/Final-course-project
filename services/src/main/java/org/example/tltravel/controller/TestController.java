@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -20,9 +21,17 @@ public class TestController {
     }
 
     @GetMapping("/index")
-    public ModelAndView homePage(Model model){
+    public ModelAndView homePage(@RequestParam(value="agentId", required=false) Long agentId,Model model){
+        model.addAttribute("agentId",agentId);
 
         return new ModelAndView ("index");        // resolves to /templates/index.html
+    }
+
+
+    @GetMapping("Admin/adminPanel")
+    public ModelAndView adminPanel(Model model) {
+
+        return new ModelAndView("adminPanel");
     }
 
     @GetMapping("/about")
@@ -46,10 +55,10 @@ public class TestController {
         return "elements";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String login() {
+//        return "login";
+//    }
 
     @GetMapping("/offers")
     public String offers() {

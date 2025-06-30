@@ -19,6 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
@@ -26,7 +30,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -48,7 +51,28 @@ public class UserServiceImpl implements IUserService {
     private UserRoleRepository userRoleRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private final UserDetailsServiceImpl userDetailsService;
 
+    public UserServiceImpl(UserDetailsServiceImpl userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
+
+    @Override
+    public Authentication login(String email) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        return auth;
+    }
     @Transactional(rollbackFor = Exception.class)
     @Override
     public UserOutView createUser(UserInView inView) throws TLEntityNotFound {
@@ -130,7 +154,34 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public Page<UserOutView> getAll(Pageable pageable) throws TLEntityNotFound {
-        return null;
+        String logId = UUID.randomUUID().toString();
+        log.info("{} : getAll start", logId);
+        try{
+            Page<UserEntity> entities = userRepository.findAllActive(pageable);
+//            for (UserEntity entity:entities) {
+//                UserRoleEntity userRole = userRoleRepository.findByUserId(entity.getId());
+//                Optional<RoleEntity> roleEntity = roleRepository.findByIdAndActiveTrue(userRole.getRole_id());
+//                String role = roleEntity.get().getName();
+//            }
+
+
+
+
+
+            List<UserOutView> userOutViews = modelMapper.map(entities.getContent(),
+                    new TypeToken<List<UserOutView>>(){}.getType());
+
+            Page<UserOutView> res = new PageImpl<>(userOutViews,pageable,entities.getTotalElements());
+
+
+            return res;
+
+        }catch (Exception e){
+            log.error("{}: getAll error", logId,e);
+            throw e;
+        }finally {
+            log.info("{}: getAll finished", logId);
+        }
     }
 
     @Override

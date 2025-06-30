@@ -2,6 +2,7 @@ package org.example.tltravel.config;
 
 import org.example.tltravel.repositories.UserRepository;
 //import org.example.tltravel.service.impl.UserDetailsServiceImpl;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -33,21 +34,45 @@ public class SecurityConfig {
                 .csrf().disable()
 
                 // 2) Allow all requests through without login
-                .authorizeRequests()
-                .anyRequest().permitAll();
+//                .authorizeRequests()
+//                .anyRequest().permitAll();
 
 //        http
-//                .authorizeHttpRequests(authz -> authz
-//                        .requestMatchers("/Admin/**").hasRole("ADMIN")
-//                        .requestMatchers("/Agent/**").hasRole("AGENT")
-//                        .requestMatchers("/Client/**").hasRole("CLIENT")
-//                        .requestMatchers("/Operator/**").hasRole("OPERATOR")
-//                        .anyRequest().authenticated()
-//                )
-//                .httpBasic(Customizer.withDefaults())
-//                .formLogin(Customizer.withDefaults())
-//                ;
-//        return http.build();
+                .authorizeHttpRequests(authz -> authz
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("/assets/**").permitAll()
+                        .requestMatchers( "/login","/logout").permitAll()
+                        .requestMatchers("/Admin/**").hasRole("ADMIN")
+//                        .requestMatchers("/Users/**").hasRole("AGENT")
+                        .requestMatchers("/Agent/**").hasRole("AGENT")
+                        .requestMatchers("/Client/**").hasRole("CLIENT")
+                        .requestMatchers("/Extras/**").hasAnyRole("OPERATOR", "ADMIN")
+                        .requestMatchers("/FeedingType/**").hasAnyRole("OPERATOR", "ADMIN")
+                        .requestMatchers("/Hotel/**").hasAnyRole("OPERATOR","ADMIN")
+                        .requestMatchers("/HotelPhotos/**").hasAnyRole("OPERATOR","ADMIN")
+                        .requestMatchers("/RoomPhotos/**").hasAnyRole("OPERATOR","ADMIN")
+                        .requestMatchers("/Operator/**").hasRole("OPERATOR")
+                        .anyRequest().authenticated()
+                )
+
+                .formLogin(
+                formLogin -> {
+                    formLogin
+                            .loginPage("/login")
+                            .usernameParameter("email")
+                            .passwordParameter("password")
+                            .defaultSuccessUrl("/index",true)
+                            .failureForwardUrl("/login-error");
+                }
+        ).logout(
+                logout -> {
+                    logout.logoutUrl("/logout")
+                            .logoutSuccessUrl("/")
+                            .invalidateHttpSession(true);
+                }
+        )
+                ;
+        return http.build();
 
 //        http
 //
@@ -56,17 +81,17 @@ public class SecurityConfig {
 //                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
 //                        .anyRequest().authenticated().anyRequest().authenticated())
 //                ;
-//
+
 //        return http.build();
-//
+
 //        http.csrf().disable();
 //        http
 //                .authorizeHttpRequests(authz -> authz
 //                        .requestMatchers(HttpMethod.POST, "/Users").permitAll()
 //                        .anyRequest().authenticated()
 //                ).httpBasic();  // <-- enables Basic auth
-//
-        return http.build();
+
+//        return http.build();
     }
 //
 @Bean

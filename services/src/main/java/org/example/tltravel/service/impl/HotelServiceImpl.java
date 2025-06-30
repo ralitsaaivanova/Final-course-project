@@ -34,7 +34,6 @@ public class HotelServiceImpl implements IHotelService {
 
     Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
-    //Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Autowired
     private HotelRepository hotelRepository;
@@ -90,10 +89,6 @@ public class HotelServiceImpl implements IHotelService {
         try{
             Page<HotelEntity> entities = hotelRepository.findAllActive(pageable);
 
-//            for (HotelEntity hotelEntity : entities) {
-//                HotelOutView hotelOutView= modelMapper.map(hotelEntity, HotelOutView.class);
-//                hotelOutViews.add(hotelOutView);
-//            }
 
             List<HotelOutView> hotelOutViews = modelMapper.map(entities.getContent(),
                     new TypeToken<List<HotelOutView>>(){}.getType());
@@ -140,8 +135,6 @@ public class HotelServiceImpl implements IHotelService {
         log.debug("{} : params: id: {}", logId,id);
 
         try{
-            //hotelRepository.deleteById(id);
-
             HotelEntity hotelEntity = hotelRepository.findById(id).orElseThrow(()->new TLEntityNotFound());
             if(!hotelEntity.getActive()){
                 throw new TLEntityNotActive(hotelEntity.toString());
@@ -195,7 +188,7 @@ public class HotelServiceImpl implements IHotelService {
         try{
             HotelEntity entity = hotelRepository.findByIdAndIsActive(id).orElseThrow(()->new TLEntityNotFound());
 
-            //Всички ли са активни?
+
             List<ExtrasEntity> entities = hotelRepository.findAllByExtraIdAndActive(id);
             List<ExtrasOutView> res = modelMapper.map(entities,new TypeToken<List<ExtrasOutView>>(){}.getType());
 
